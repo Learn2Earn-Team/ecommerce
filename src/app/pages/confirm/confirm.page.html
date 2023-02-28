@@ -1,0 +1,104 @@
+<ion-content mode="ios">
+
+
+
+  <ion-card class="nav">
+
+
+    <ion-back-button class="btn" mode="md" defaultHref="/"></ion-back-button>
+    <ion-title class="t1">Confirm Order</ion-title>
+
+    <ion-icon class="icn" name="cart-outline"></ion-icon>
+
+
+  </ion-card>
+
+  <ion-row>
+
+    <ion-col size-xs="12" size-md="8">
+
+
+      <ion-card class="c1">
+
+        <ion-card class="itc">
+          <ion-card-subtitle>Name</ion-card-subtitle>
+          <ion-card-title class="t11">Usman Khawar</ion-card-title>
+
+        </ion-card>
+
+        <ion-card class="itc">
+          <ion-card-subtitle>Phone no</ion-card-subtitle>
+          <ion-card-title class="t11">+923095646842</ion-card-title>
+        </ion-card>
+
+
+        <ion-card class="itc">
+          <ion-card-subtitle>Address</ion-card-subtitle>
+          <ion-card-title class="t11">House no 671B3 waterworks no 2 </ion-card-title>
+        </ion-card>
+
+      </ion-card>
+
+      <ion-card class="c1">
+        <ion-item class="itm1" lines="none" *ngFor="let d of data">
+          <ion-thumbnail slot="start">
+            <img alt="Silhouette of a person's head" src="{{d.img}}" />
+          </ion-thumbnail>
+          <ion-label>
+            {{d.name}}
+            <ion-card-subtitle>Rs {{d.price}}</ion-card-subtitle>
+          </ion-label>
+        </ion-item>
+
+
+
+
+
+
+      </ion-card>
+
+
+    </ion-col>
+
+    <ion-col size-xs="12" size-md="4">
+      <ion-card class="c1" style="margin-top: 0;">
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-label><ion-card-title class="t3">Subtotal</ion-card-title></ion-label>
+            <ion-card-subtitle class="st3"> Rs 14800</ion-card-subtitle>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label><ion-card-title class="t3">Delivery</ion-card-title></ion-label>
+            <ion-card-subtitle class="st3"> Rs 200</ion-card-subtitle>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-label><ion-card-title class="t3">Total</ion-card-title></ion-label>
+            <ion-card-subtitle class="st3"> Rs 15000</ion-card-subtitle>
+          </ion-item>
+        </ion-col>
+
+      </ion-card>
+
+
+
+      <ion-card class="c2">
+        <ion-card-subtitle>Payment Method</ion-card-subtitle>
+        <ion-card-title class="t11">Cash on delivery</ion-card-title>
+      </ion-card>
+
+
+    </ion-col>
+
+  </ion-row>
+
+
+  <ion-button class="btn1">Buy now</ion-button>
+
+</ion-content>

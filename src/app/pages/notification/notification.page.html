@@ -1,0 +1,25 @@
+
+<ion-content mode="iso">
+  
+
+  <ion-card class="nav">
+
+
+    <ion-back-button class="btn" mode="md" defaultHref="/"></ion-back-button>
+   <ion-title class="t1">Notifications</ion-title>
+
+    <ion-icon class="icn" name="cart-outline"  (click)="cart()"></ion-icon>
+
+
+  </ion-card>
+
+
+  <ion-card class="c1" *ngFor="let n of not">
+<h4>{{n.name}}</h4>
+    <p>{{n.time}}</p>
+  </ion-card> 
+
+
+
+
+</ion-content>

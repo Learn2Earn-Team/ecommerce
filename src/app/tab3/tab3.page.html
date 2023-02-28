@@ -1,17 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content mode="iso">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card class="nav">
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+
+    <ion-back-button class="btn" mode="md" defaultHref="/"></ion-back-button>
+   <ion-title class="t1">Profile</ion-title>
+
+    <ion-icon class="icn" name="cart-outline" (click)="cart()"></ion-icon>
+
+
+  </ion-card>
+
+
+
+  <img src="./../../../assets/dj-svgrepo-com.svg" class="prf" alt="">
+
+  <ion-button class="btn1"> Edit Profile</ion-button>
+
+  <ion-card class="c1">
+
+    <ion-card-subtitle class="t31"> Shahzaib Malik</ion-card-subtitle>
+    <ion-card-subtitle class="t31"> +923095646842</ion-card-subtitle>
+    <ion-card-subtitle class="t31">Housen no 671B3 Waterworks no 2 Pir Karian</ion-card-subtitle>
+  </ion-card>
+
+  <ion-row>
+    <ion-card-title class="t21">Orders</ion-card-title>
+  </ion-row>
+
+  <ion-card class="c11">
+    
+    <ion-item class="it1" lines="none" *ngFor="let d of data">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="{{d.img}}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{d.name}}</h4>
+        <ion-card-title class="pr">Rs {{d.price}}</ion-card-title>
+        
+        
+        <br>
+
+      </ion-label>
+      
+
+    </ion-item>
+
+  </ion-card>
+
+
 </ion-content>

@@ -1,0 +1,61 @@
+<ion-content mode="ios">
+
+  
+  <ion-card class="nav">
+
+
+    <ion-back-button class="btn" mode="md" defaultHref="/"></ion-back-button>
+   <ion-title class="t1">Cart</ion-title>
+
+    <ion-icon class="icn" name="cart-outline"></ion-icon>
+
+
+  </ion-card>
+
+  <ion-card class="c1">
+    
+    <ion-item class="it1" lines="none" *ngFor="let d of data">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="{{d.img}}" />
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{d.name}}</h4>
+        <ion-card-title class="pr">Rs {{d.price}}</ion-card-title>
+        
+        
+        <br>
+
+      <ion-icon name="remove" class="min" (click)="min()"></ion-icon>
+      <ion-input value="{{this.quat }}" [readonly]="true"></ion-input>
+      <ion-icon name="add" class="min"  (click)="plus()"></ion-icon>
+      </ion-label>
+      
+      <ion-button class="del"><ion-icon name="trash-outline" class="icn1"></ion-icon></ion-button>
+
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card class="c1">
+
+    <ion-item lines="none" class="it2">
+      <ion-label>Subtotal</ion-label>
+      <p>Rs 14800</p>
+    </ion-item>
+
+    <ion-item lines="full" class="it2">
+      <ion-label>Delivery</ion-label>
+      <p>Rs 200</p>
+    </ion-item>
+
+    <ion-item lines="none" class="it2">
+      <ion-label>Total</ion-label>
+      <p>Rs 15000</p>
+    </ion-item>
+
+
+  </ion-card>
+
+  <ion-button class="btn1" (click)="cart()">Check Out</ion-button>
+
+</ion-content>

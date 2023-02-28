@@ -1,0 +1,25 @@
+<ion-content mode="iso">
+
+  <ion-card class="nav">
+
+
+    <ion-back-button class="btn" mode="md" defaultHref="/"></ion-back-button>
+   <ion-title class="t1">Catagory</ion-title>
+
+    <ion-icon class="icn" name="cart-outline" (click)="cart()"></ion-icon>
+
+
+  </ion-card>
+
+  <ion-item *ngFor="let d of data" lines="none">
+    <ion-thumbnail slot="end">
+      <img alt="Silhouette of mountains" src="{{d.img}}" />
+    </ion-thumbnail>
+    <ion-label>
+      <ion-card-title class="tt1">{{d.name}}</ion-card-title>
+
+    </ion-label>
+  </ion-item>
+
+
+</ion-content>

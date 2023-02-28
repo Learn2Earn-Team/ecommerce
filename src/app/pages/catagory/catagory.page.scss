@@ -1,0 +1,20 @@
+ion-content{
+    --background: rgb(247, 247, 247);
+}
+
+ion-item{
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    --border-radius: 15px;
+    --background: #fff;
+
+    img{
+        border-radius: 10px;
+        object-fit: cover;
+    }
+    .tt1{
+        font-size: 16px;
+    }
+}

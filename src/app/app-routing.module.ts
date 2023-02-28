@@ -5,6 +5,26 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./pages/product/product.module').then( m => m.ProductPageModule)
+  },
+  {
+    path: 'catagory',
+    loadChildren: () => import('./pages/catagory/catagory.module').then( m => m.CatagoryPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./pages/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'confirm',
+    loadChildren: () => import('./pages/confirm/confirm.module').then( m => m.ConfirmPageModule)
   }
 ];
 @NgModule({

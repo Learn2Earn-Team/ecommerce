@@ -1,17 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content mode="ios">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card class="nav">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+   
+
+    <ion-icon class="icn1" name="grid-outline" (click)="catag()"></ion-icon>
+    <ion-icon class="icn" name="cart-outline" (click)="cart()"></ion-icon>
+
+
+  </ion-card>
+
+<ion-card class="c1">
+  <img src="./../../assets/sale-discount-banner-template-promotion-illustration-free-vector.jpg" class="im1" alt="">
+</ion-card>
+
+
+
+<ion-row>
+  <ion-card-title class="t2">Featured</ion-card-title>
+</ion-row>
+
+<ion-slides [options]="slideOptsOne">
+
+      <ion-slide *ngFor="let d of data">
+
+        <ion-card class="c2" (click)="detail()">
+          <img src="{{d.img}}" alt="">
+
+          <ion-card-content>
+
+
+            <ion-card-title class="st2">Rs {{d.price}}</ion-card-title>
+              <ion-card-title class="tl">{{d.name | slice:0:15}}{{ d.name.length > 15 ? '...' : ''}}</ion-card-title>
+              
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-slide>
+  
+</ion-slides>
+
+
+
+<ion-row>
+  <ion-card-title class="t2">Men Collection</ion-card-title>
+</ion-row>
+
+<ion-slides [options]="slideOptsOne">
+
+      <ion-slide *ngFor="let d of data">
+
+        <ion-card class="c2" (click)="detail()">
+          <img src="{{d.img}}" alt="">
+
+          <ion-card-content>
+
+              <ion-card-title class="tl">{{d.name}}</ion-card-title>
+              
+              <ion-card-subtitle class="st2">Rs {{d.price}}</ion-card-subtitle>
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-slide>
+  
+</ion-slides>
+
 </ion-content>
