@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from "./../services/global.service";
+import { ApicallService } from "./../services/apicall.service";
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -8,14 +11,25 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
 
-  constructor(public router: Router) {}
+  constructor(public global :GlobalService , public apiCall : ApicallService, public router: Router) {}
 
-
+  public product:any =[{p_id:"", name:"", price:"", brand: "", description:"", img:""}]
 
   cart(){
     this.router.navigate(['cart'])
    }
 
+   ngOnInit() {
+    this.get_product();
+
+  }
+
+  get_product(){
+    this.apiCall.api_getproduct();
+    this.global.Product.subscribe( res =>{
+      this.product = res;
+    });
+  }
 
   public data: any =[{name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"},
