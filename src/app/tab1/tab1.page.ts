@@ -12,7 +12,7 @@ import { OnInit } from '@angular/core';
 export class Tab1Page {
 
   constructor(public global :GlobalService , public apiCall : ApicallService, public router: Router) {}
-
+  
   public product:any =[{p_id:"", name:"", price:"", brand: "", description:"", img:""}]
 
   cart(){
@@ -30,51 +30,12 @@ export class Tab1Page {
       this.product = res;
     });
   }
+  
 
   public data: any =[{name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"},
   {name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
-
-
-  public categ: any =[{name: "Men"},{name: "Women"},{name: "Clothing"},{name: "Summer"},{name: "Winter"}]
-
-  slideOptsOnee = {
-    initialSlide: 0,
-
-    breakpoints: {
-      // when window width is >= 320px
-      320: {
-        slidesPerView: 4,
-      },
-      // when window width is >= 480px
-      440: {
-        slidesPerView: 4,
-      },
-
-      520: {
-        slidesPerView: 5,
-      },
-      // when window width is >= 640px
-      640: {
-        slidesPerView: 6,
-      },
-
-      720: {
-        slidesPerView: 7,
-      },
-
-      850: {
-        slidesPerView: 8,
-      },
-
-      
-
-    
-    }
-   };
-
-
 
 
   slideOptsOne = {
@@ -128,7 +89,9 @@ export class Tab1Page {
     }
    };
 
-   detail(){
+   detail(d: any){
+    this.global.set_nextproduct(d);
+    console.log(d);
     this.router.navigate(['product'])
    }
 
@@ -138,4 +101,43 @@ export class Tab1Page {
    }
 
 
+public categ: any =[{name: "Men"},{name: "Women"},{name: "Clothing"},{name: "Summer"},{name: "Winter"}]
+
+slideOptsOnee = {
+  initialSlide: 0,
+
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 4,
+    },
+    // when window width is >= 480px
+    440: {
+      slidesPerView: 4,
+    },
+
+    520: {
+      slidesPerView: 5,
+    },
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 6,
+    },
+
+    720: {
+      slidesPerView: 7,
+    },
+
+    850: {
+      slidesPerView: 8,
+    },
+
+    
+
+  
+  }
+ };
+
+
 }
+

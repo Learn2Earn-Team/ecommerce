@@ -1,3 +1,32 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content"  #ionSplitPane>
+   
+    <ion-menu type="overlay" content-id="main-content">
+
+   
+      <ion-content mode="ios">
+
+        <ion-card-title class="t1">Category</ion-card-title>
+
+            <ion-menu-toggle [autoHide]="false" *ngFor="let m of menu; let i = index">
+              <ion-card class="mn" id="menu-button"  (click)="clickMenuItem = i" routerDirection="root" [routerLink]="[m.path]" routerLinkActive="selected" detail="false">
+    
+                <div class="style"></div>
+                <ion-item lines="none">
+                  <ion-icon name="{{m.icon}}" slot="start"></ion-icon>
+                  <ion-label>{{m.name}}</ion-label>
+                </ion-item>
+    
+
+
+          </ion-card>
+        </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+
+    
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
+
 </ion-app>

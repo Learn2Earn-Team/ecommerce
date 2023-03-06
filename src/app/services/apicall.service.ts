@@ -28,15 +28,6 @@ export class ApicallService {
 
   //category
 
-  api_getcategory(){
-    this.authservice.getdata('getcategory').then((result) => {
-      this.category = JSON.parse(String(result));
-      this.global.set_category(this.category);
-      console.log(this.category,'data Updated');
-    }, (err) => {
 
-      console.log(err);
-    });
-  }
 
 }

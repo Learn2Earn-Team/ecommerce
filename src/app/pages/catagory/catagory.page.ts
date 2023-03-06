@@ -19,19 +19,12 @@ export class CatagoryPage implements OnInit {
 
   constructor(public global :GlobalService , public apiCall : ApicallService, public router: Router) {}
 
-  public category:any =[{c_id:"", name:"", img:""}]
+
 
 
   ngOnInit() {
-    this.get_category();
 
-  }
 
-  get_category(){
-    this.apiCall.api_getcategory();
-    this.global.Category.subscribe( res =>{
-      this.category = res;
-    });
   }
 
 
@@ -39,7 +32,7 @@ export class CatagoryPage implements OnInit {
     this.router.navigate(['cart'])
    }
 
-   type = 'Men';
+   type = 'deposit';
 
 
  

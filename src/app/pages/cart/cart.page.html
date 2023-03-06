@@ -1,6 +1,8 @@
 <ion-content mode="ios">
 
-  
+
+
+
   <ion-card class="nav">
 
 
@@ -12,9 +14,15 @@
 
   </ion-card>
 
+  <ion-list *ngIf = "this.cart_data.length == 0 ">
+    <img class="img-set-cart" src="../../assets/undraw_empty_cart_co35.svg" alt="">
+    <p  class="Empty">Add to Cart Is Empty</p>
+  </ion-list>
+
+  <ion-list  *ngIf = "this.cart_data.length !== 0">
   <ion-card class="c1">
     
-    <ion-item class="it1" lines="none" *ngFor="let d of data">
+    <ion-item class="it1" lines="none" *ngFor="let d of cart_data">
       <ion-thumbnail slot="start">
         <img alt="Silhouette of mountains" src="{{d.img}}" />
       </ion-thumbnail>
@@ -25,16 +33,17 @@
         
         <br>
 
-      <ion-icon name="remove" class="min" (click)="min()"></ion-icon>
-      <ion-input value="{{this.quat }}" [readonly]="true"></ion-input>
+      <ion-icon name="remove" class="min" (click)="sub()"></ion-icon>
+      <span>{{quantity}}</span>
       <ion-icon name="add" class="min"  (click)="plus()"></ion-icon>
       </ion-label>
       
-      <ion-button class="del"  fill="clear"><ion-icon name="trash-outline" class="icn1"></ion-icon></ion-button>
+      <ion-button  (click)="delete(cart_data)"  class="del" ><ion-icon name="trash-outline" class="icn1" ></ion-icon></ion-button>
 
     </ion-item>
 
   </ion-card>
+
 
   <ion-card class="c1">
 
@@ -57,5 +66,5 @@
   </ion-card>
 
   <ion-button class="btn1" (click)="cart()">Check Out</ion-button>
-
+</ion-list>
 </ion-content>

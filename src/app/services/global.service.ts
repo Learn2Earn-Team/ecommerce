@@ -6,23 +6,28 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
+  Category: any;
 
   constructor() { }
 
   private product = new BehaviorSubject<any>('');
   public Product = this.product.asObservable();
 
-  set_product(product : any){
-    this.product.next(product);
+  set_product(Product : any){
+    this.product.next(Product);
+  }
+  private nextproduct = new BehaviorSubject<any>('');
+  public Nextproduct = this.nextproduct.asObservable();
+
+  set_nextproduct(nextproduct : any){
+    this.nextproduct.next(nextproduct);
   }
 
-//category
 
-private category = new BehaviorSubject<any>('');
-public Category = this.category.asObservable();
+  private addcart = new BehaviorSubject<any>('');
+  public Addcart = this.addcart.asObservable();
 
-set_category(category : any){
-  this.category.next(category);
-}
-
+  set_addcart(addcart : any){
+    this.addcart.next(addcart);
+  }
 }

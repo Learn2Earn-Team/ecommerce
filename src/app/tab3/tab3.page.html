@@ -15,7 +15,7 @@
 
   <img src="./../../../assets/dj-svgrepo-com.svg" class="prf" alt="">
 
-  <ion-button class="btn1"> Edit Profile</ion-button>
+  <ion-button class="btn1" (click)="setOpen(true)"> Edit Profile</ion-button>
 
   <ion-card class="c1">
 
@@ -46,6 +46,38 @@
 
     </ion-col>
   </ion-row>
+
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+     
+      <ion-content>
+        <ion-button style="float: right;" fill="clear" (click)="setOpen(false)"><ion-icon name="close-circle"></ion-icon></ion-button>
+        
+        <ion-card-title class="t2">Edit Profile</ion-card-title>
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-button class="btn1">Update</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 
 
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,33 +9,48 @@ import { Router } from '@angular/router';
 })
 export class CartPage implements OnInit {
 
-  public data: any =[{name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
-  {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"},
-  {name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
-  {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
-
-  public quat: any = 1;
-
-  min(){
-    if(this.quat > 1) {
-      this.quat--;
+  public data: any;
+  public quantity: any = 1;
+  public cart_data :any;
+  
+  plus(){
+    if(this.quantity<4){
+      this.quantity++
     }
 
   }
 
 
-  plus() {
-    this.quat++;
+  sub(){
+    if(this.quantity>1){  
+    this.quantity--;
+
+    }
   }
 
   
-  constructor(public router: Router) {}
+  constructor(public router: Router , public global:GlobalService) {}
 
   ngOnInit() {
+    this.global.Addcart.subscribe(res=>{
+      this.cart_data=res;
+      console.log(this.cart_data)
+
+    });
   }
   cart(){
     this.router.navigate(['confirm'])
    }
 
+   cart_store(){
+    this.global.Addcart.subscribe(res=>{
+      this.cart_data=res;
+      console.log(this.cart_data)
 
+    });
+}
+delete(chatfil: any){
+  this.cart_data.splice(chatfil,1);
+  
+}
 }

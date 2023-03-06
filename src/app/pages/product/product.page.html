@@ -10,14 +10,14 @@
   </ion-card>
 
   <ion-card class="c1">
-    <img alt="Silhouette of mountains" src="{{this.data.img}}" />
+    <img alt="Silhouette of mountains" src="{{this.store.img}}" />
     <ion-card-header>
-      <ion-card-title>{{this.data.name}}</ion-card-title>
+      <ion-card-title>{{this.store.name}}</ion-card-title>
 
-      <ion-card-title class="tt1">Rs {{this.data.price}}</ion-card-title>
+      <ion-card-title class="tt1">Rs {{this.store.price}}</ion-card-title>
       
 
-      <h6>Brand: </h6><ion-card-title class="tt2">{{this.data.brand}}</ion-card-title>
+      <h6>Brand: </h6><ion-card-title class="tt2">{{this.store.brand}}</ion-card-title>
 
     </ion-card-header>
   
@@ -31,6 +31,6 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button class="btn1" (click)="cart()">Add to cart</ion-button>
+  <ion-button class="btn1" (click)="cart(store)">Add to cart</ion-button>
 
 </ion-content>
