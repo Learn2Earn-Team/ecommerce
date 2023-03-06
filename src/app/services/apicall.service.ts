@@ -13,6 +13,7 @@ export class ApicallService {
   constructor(private router: Router ,private authservice: AuthService , public global: GlobalService , public httpClient : HttpClient) { }
 
   public product:any;
+  public category:any;
 
   api_getproduct(){
     this.authservice.getdata('getproduct').then((result) => {
@@ -24,4 +25,18 @@ export class ApicallService {
       console.log(err);
     });
   }
+
+  //category
+
+  api_getcategory(){
+    this.authservice.getdata('getcategory').then((result) => {
+      this.category = JSON.parse(String(result));
+      this.global.set_category(this.category);
+      console.log(this.category,'data Updated');
+    }, (err) => {
+
+      console.log(err);
+    });
+  }
+
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from "./../../services/global.service";
+import { ApicallService } from "./../../services/apicall.service";
 
 @Component({
   selector: 'app-catagory',
@@ -14,17 +16,36 @@ export class CatagoryPage implements OnInit {
   {name:"Under Garments", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
 
-  
-  constructor(public router: Router) {}
 
+  constructor(public global :GlobalService , public apiCall : ApicallService, public router: Router) {}
+
+  public category:any =[{c_id:"", name:"", img:""}]
+
+
+  ngOnInit() {
+    this.get_category();
+
+  }
+
+  get_category(){
+    this.apiCall.api_getcategory();
+    this.global.Category.subscribe( res =>{
+      this.category = res;
+    });
+  }
 
 
   cart(){
     this.router.navigate(['cart'])
    }
 
+   type = 'Men';
 
-  ngOnInit() {
-  }
+
+ 
+   segmentChanged(ev: any) {
+     console.log('Segment changed', ev);
+   }
+
 
 }

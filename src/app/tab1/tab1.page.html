@@ -15,6 +15,22 @@
 </ion-card>
 
 
+<ion-row>
+  <ion-card-title class="t2">Category</ion-card-title>
+</ion-row>
+
+<ion-slides [options]="slideOptsOnee">
+  <ion-slide *ngFor="let c of categ">
+
+    <div class="bd">
+      <img src="" alt="">
+      <h6>{{c.name}}</h6>
+    </div>  
+
+  </ion-slide>
+</ion-slides>
+
+
 
 <ion-row>
   <ion-card-title class="t2">Featured</ion-card-title>
@@ -41,7 +57,6 @@
       </ion-slide>
   
 </ion-slides>
-
 
 
 <ion-row>

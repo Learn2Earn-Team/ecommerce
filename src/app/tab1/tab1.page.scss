@@ -91,3 +91,21 @@
 
 }
 
+
+.bd{
+    text-align: center;
+    margin-top: 20px;
+    img{
+        height: 60px;
+        width: 60px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-left: auto;
+        background: #D39915;
+        margin-right: auto;
+    }
+
+    h6{
+        font-size: 12px;
+    }
+}

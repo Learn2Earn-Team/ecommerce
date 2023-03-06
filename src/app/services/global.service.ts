@@ -12,7 +12,17 @@ export class GlobalService {
   private product = new BehaviorSubject<any>('');
   public Product = this.product.asObservable();
 
-  set_product(operate : any){
-    this.product.next(operate);
+  set_product(product : any){
+    this.product.next(product);
   }
+
+//category
+
+private category = new BehaviorSubject<any>('');
+public Category = this.category.asObservable();
+
+set_category(category : any){
+  this.category.next(category);
+}
+
 }
