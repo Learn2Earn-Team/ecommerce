@@ -1,26 +1,23 @@
-<ion-content mode="ios">
-
-  <ion-card class="c1">
-
-    <img src="./../../../assets/icon/EZplum App icon Black on Blue.png" class="icn">
-    
-    <ion-card-title class="t1">Login</ion-card-title>
-    <ion-card-subtitle class="st1">Access to your account</ion-card-subtitle>
-
- 
-    <ion-item lines="none" class="google" (click)="googleLogin()">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="./../../../assets/google.png" />
-      </ion-avatar>
-      <ion-label>
-        Login With Google
-      </ion-label>
-    </ion-item>
-
-    <svg class="s1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="currentcolor" fill-opacity="1" d="M0,256L48,250.7C96,245,192,235,288,202.7C384,171,480,117,576,112C672,107,768,149,864,170.7C960,192,1056,192,1152,165.3C1248,139,1344,85,1392,58.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 
 
 
-</ion-card>
+<ion-content>
+        <img class="as_img" src="../../../assets/ar collection.png" alt="">  
+          
+        <h3>Login</h3>
 
+
+ <ion-list class="page-container">
+  <ion-row  >
+   <ion-col size="12" size-md="12">
+    <ion-input  [(ngModel)]="this.user.email" placeholder="Email" type="Email"></ion-input>
+    </ion-col>
+    <ion-col size="12" size-md="12">
+      <ion-input [(ngModel)]="this.user.password"  placeholder="Password" type="Password"></ion-input>
+      </ion-col>
+  </ion-row>
+
+  <ion-button mode="ios" (click)="login()">Login</ion-button>
+</ion-list>
+<p class="text">Don't Have an Account <b (click)="next()" >Sign Up</b></p>
 </ion-content>

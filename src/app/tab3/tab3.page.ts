@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
+  public profile:any={name:'',email:'',password:'',confirm_password:'',number:'',adress:'' }
  
   constructor(public router: Router) {}
 
-
+  update_profile(){
+    console.log(this.profile)
+  }
 
   cart(){
     this.router.navigate(['cart'])

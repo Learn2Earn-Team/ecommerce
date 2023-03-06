@@ -32,10 +32,13 @@
         
         
         <br>
-
+      <ion-button>
       <ion-icon name="remove" class="min" (click)="sub()"></ion-icon>
-      <span>{{quantity}}</span>
+      </ion-button>
+      <span class="margin">{{quantity}}</span>
+      <ion-button>
       <ion-icon name="add" class="min"  (click)="plus()"></ion-icon>
+      </ion-button>
       </ion-label>
       
       <ion-button  (click)="delete(cart_data)"  class="del" ><ion-icon name="trash-outline" class="icn1" ></ion-icon></ion-button>

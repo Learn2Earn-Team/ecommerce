@@ -7,14 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+public user:any= {email:'' ,password:''}
   constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
-  googleLogin(){
+  login(){
+    console.log(this.user)
     this.router.navigate(['tabs/tab1'])
+  }
+  next(){
+    this.router.navigate(['signup'])
   }
 
 }
