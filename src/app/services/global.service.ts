@@ -6,7 +6,7 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
-  Category: any;
+
 
   constructor() { }
 
@@ -29,5 +29,37 @@ export class GlobalService {
 
   set_addcart(addcart : any){
     this.addcart.next(addcart);
+  }
+  private category = new BehaviorSubject<any>('');
+  public Category = this.category.asObservable();
+
+  set_Category(category: any): void {
+    this.category.next(category);
+  }
+
+  private feature = new BehaviorSubject<any>('');
+  public Feature = this.feature.asObservable();
+
+  set_Feature(feature: any): void {
+    this.feature.next(feature);
+  }
+  private latest = new BehaviorSubject<any>('');
+  public Latest = this.latest.asObservable();
+
+  set_Latest(latest: any): void {
+    this.latest.next(latest);
+  }
+  private cart = new BehaviorSubject<any>('');
+  public Cart = this.cart.asObservable();
+
+  set_Cart(cart: any): void {
+    this.cart.next(cart);
+  }
+
+  private user = new BehaviorSubject<any>('');
+  public User = this.user.asObservable();
+
+  set_User(user: any): void {
+    this.user.next(user);
   }
 }

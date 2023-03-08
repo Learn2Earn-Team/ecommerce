@@ -22,11 +22,11 @@
 </ion-row>
 
 <ion-slides [options]="slideOptsOnee">
-  <ion-slide *ngFor="let c of categ">
+  <ion-slide *ngFor="let c of categroy">
 
-    <div class="bd">
-      <img src="" alt="">
-      <h6>{{c.name}}</h6>
+    <div class="bd" (click)="goto(c)">
+      <img src="{{c.image}}" alt="">
+      <h6>{{c.c_name}}</h6>
     </div>  
 
   </ion-slide>
@@ -40,15 +40,15 @@
 
 <ion-slides [options]="slideOptsOne">
 
-      <ion-slide *ngFor="let d of product">
+      <ion-slide *ngFor="let d of feature">
 
         <ion-card class="c2" (click)="detail(d)">
-          <img src="{{d.img}}" alt="">
+          <img src="{{d.image}}" alt="">
 
           <ion-card-content>
 
 
-            <ion-card-title class="st2">Rs {{d.price}}</ion-card-title>
+            <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
               <ion-card-title class="tl">{{d.name | slice:0:15}}{{ d.name.length > 15 ? '...' : ''}}</ion-card-title>
               
 
@@ -68,16 +68,16 @@
 
 <ion-slides [options]="slideOptsOne">
 
-      <ion-slide *ngFor="let d of data">
+      <ion-slide *ngFor="let d of latest">
 
         <ion-card class="c2" (click)="detail(d)">
-          <img src="{{d.img}}" alt="">
+          <img src="{{d.image}}" alt="">
 
           <ion-card-content>
 
               <ion-card-title class="tl">{{d.name}}</ion-card-title>
               
-              <ion-card-subtitle class="st2">Rs {{d.price}}</ion-card-subtitle>
+              <ion-card-subtitle class="st2">Rs {{d.price_per_unit}}</ion-card-subtitle>
 
           </ion-card-content>
 

@@ -16,14 +16,29 @@ export class CatagoryPage implements OnInit {
 
 
 
-  constructor(public global :GlobalService , public apiCall : ApicallService, public router: Router) {}
+  constructor(public global :GlobalService , public apicall : ApicallService, public router: Router) {}
 
-
+  public product: any;
 
 
   ngOnInit() {
+    this.global.Product.subscribe(res => {
+      this.product = res;
+      console.log(this.product);
+    });
+    if (this.product === null){
+      this.apicall.api_getallproducts();
+      this.global.Product.subscribe(res => {
+        this.product = res;
+        console.log(this.product);
+      });
+    }
 
+  }
 
+  gotodetail(value: any){
+    console.log(value);
+    this.router.navigate(['product'] , {state : {data : value}});
   }
 
 

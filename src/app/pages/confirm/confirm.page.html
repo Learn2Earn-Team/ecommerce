@@ -40,13 +40,13 @@
       </ion-card>
 
       <ion-card class="c1">
-        <ion-item class="itm1" lines="none" *ngFor="let d of data">
+        <ion-item class="itm1" lines="none" *ngFor="let d of cart">
           <ion-thumbnail slot="start">
-            <img alt="Silhouette of a person's head" src="{{d.img}}" />
+            <img alt="Silhouette of a person's head" src="{{d.image}}" />
           </ion-thumbnail>
           <ion-label>
             {{d.name}}
-            <ion-card-subtitle>Rs {{d.price}}</ion-card-subtitle>
+            <ion-card-subtitle>Rs {{d.price_per_unit}}</ion-card-subtitle>
           </ion-label>
         </ion-item>
 

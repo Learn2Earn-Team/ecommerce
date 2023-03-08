@@ -1,6 +1,7 @@
 import { Component , OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { GlobalService } from "./services/global.service";
+import { ApicallService } from "./services/apicall.service";
 import { IonSplitPane } from '@ionic/angular';
 
 @Component({
@@ -22,14 +23,25 @@ export class AppComponent implements OnInit, OnDestroy {
 
                      clickMenuItem : any;
                      
-  constructor(public route : Router) {}
+                     constructor(public global :GlobalService , public apicall : ApicallService, public router: Router) {}
 
   async ngOnInit() {
+    this.apicall.api_getcategory();
+    this.global.Category.subscribe(res => {
+      this.menu = res;
+  
+    });
       // Show the splash for two seconds and then automatically hide it:
   // await SplashScreen.show({
   //   showDuration: 4000,
   //   autoHide: true,
   // });
+  }
+
+  goto(value: any) {
+    this.router.navigate(['catagory']);
+    console.log(value);
+    this.apicall.api_productbycategory(value.c_id);
   }
   async ngOnDestroy() {
         // Show the splash for two seconds and then automatically hide it:

@@ -8,90 +8,54 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./product.page.scss'],
 })
 export class ProductPage implements OnInit {
-
+  public item1: any = {c_id : null , discription: null , image: null , name: null ,  price_per_unit: null , quantity: null , sc_id: null, total_quantity: null, color: null , size: null};
+  public cart: {}[] = [];
+  public cart1: any = {};
   public data: any ={name:"Men Premium Shalwar Kameez Off White", brand: "Riwaj" ,price:"2200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}
  public store:any
   public suitData: any;
   public CartData: any;
- 
+ public productdetail: any;
+
   constructor(public router: Router, public global: GlobalService) {}
 
-
-
-  // cart(store:any){
-  //   this.global.set_addcart(this.store);
-  //   console.log(store);
-  //   this.router.navigate(['cart'])
-  //  }
-
-  // async AddToCart(fooditem:any) {
-  //   let cartData:any = [];
-  //   let cartArray = [];
-  //   console.log(fooditem);
-  //    this.global.Addcart.subscribe(res=> {
-  //       cartData = res;      
-  //     });
-  //     if(cartData.length == 0) {
-  //       cartArray.push(fooditem);
-  //       this.global.set_addcart(cartArray);
-  //           this.badgeValue++;
-  //     this.global.set_cartbadge(this.badgeValue);
-  //     }
-  //     else {
-  //       const found = cartData.find((item:any) => item.id == fooditem.id)
-  //       console.log(found);
-  //       if(found) {
-  //         for(let i = 0; i < cartData.length; i++) {
-  //         if(cartData[i].id === found.id) {
-  //           cartData[i].qtn++;
-  //           cartData[i].total = cartData[i].total + cartData[i].price
-  //           console.log('repeat', cartData);
-            
-  //           this.global.set_addcart(cartData);
-  //         }
-  //       }
-  //       }
-  //       else {
-  //         cartData.push(fooditem);
-  //         this.global.set_addcart(cartData);
-  //         this.badgeValue++;
-  //         this.global.set_cartbadge(this.badgeValue);
-  //       }
-        
-  //     }
-  //   this.router.navigate(['/tab3'] , {state : {data :1}});
-  // }
-   
-async cart( store:any) {
-  console.log(store)
-  let cartData:any = [];
-  let cartArray = [];
-  this.global.Addcart.subscribe(res => {
-    cartData = res;
-  });
-  if(cartData.length == 0) {
-          cartArray.push(store);
-          console.log(cartArray)
-          this.global.set_addcart(cartArray);
-        }
-          else {
-            cartData.push(store);
-            console.log(cartData)
-            this.global.set_addcart(cartData);
-          }
-          this.router.navigate(['/cart']);
-}
-   
-
-  ngOnInit() {
-    this.stor()
+ async ngOnInit() {
+     this.productdetail =  history.state.data;
+  await console.log(this.productdetail);
+ 
   }
   
-  stor(){
-    this.global.Nextproduct.subscribe(res=>{
-      this.store=res;
-      console.log(this.store)
-    });
+ async addcart(item: any){
 
-}
+
+    let cartData:any = [];
+    let cartArray :any= [];
+  await this.global.Cart.subscribe(res=> {
+      cartData = res;
+      console.log(cartData);
+    })
+    if(cartData.length===0){
+      cartArray.push(item);
+      this.global.set_Cart(cartArray)
+    }
+    else{
+    const found = cartData.find((item1:any)=> item1.sc_id == item.sc_id)
+    console.log(found)
+    if(found){
+      for(let i=0; i<cartData.length; i++){
+        if(cartData[i].sc_id=== found.sc_id){
+          cartData[i].quantity++;
+          this.global.set_Cart(cartData);
+        }
+      }
+    }
+    else{
+      cartData.push(item)
+      this.global.set_Cart(cartData)
+    }
+
+
+    }
+     this.router.navigate(['./cart']);
+  }
 }

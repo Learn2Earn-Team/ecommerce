@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
-
+import { ApicallService } from 'src/app/services/apicall.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
@@ -9,48 +9,87 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class CartPage implements OnInit {
 
-  public data: any;
+  public cart: any;
+  public total: any = 0;
+  public grandtotal: any = 0;
+  public item: any;
   public quantity: any = 1;
-  public cart_data :any;
-  
-  plus(){
-    if(this.quantity<4){
-      this.quantity++
-    }
+  public user :  any |'';
+  // tslint:disable-next-line:max-line-length
+  order: any = {customer: {frist_name: null, last_name: null,  email: null , mobile_no: null , address: null, cnic: null, city: null, state: null , zip_code: null , total : null}, cart: {}};
+   
+  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
 
-  }
+  async ionViewDidEnter(){
+   await this.ngOnInit();
+  } 
 
-
-  sub(){
-    if(this.quantity>1){  
-    this.quantity--;
-
-    }
-  }
-
-  
-  constructor(public router: Router , public global:GlobalService) {}
-
-  ngOnInit() {
-    this.global.Addcart.subscribe(res=>{
-      this.cart_data=res;
-      console.log(this.cart_data)
-
+ async ngOnInit() {
+   // this.cart =  history.state.data;
+   await this.global.Cart.subscribe(res => {
+      this.cart = res;
+      console.log(this.cart);
     });
+   await this.totalsum();
   }
-  cart(){
-    this.router.navigate(['confirm'])
-   }
-
-   cart_store(){
-    this.global.Addcart.subscribe(res=>{
-      this.cart_data=res;
-      console.log(this.cart_data)
-
-    });
-}
-delete(chatfil: any){
-  this.cart_data.splice(chatfil,1);
+ async remove(i: any){
+    this.cart.splice(i, 1);
+    
+    this.total = 0;
+    // for ( this.item of this.cart) {
+    //   this.total =  this.total + this.item.price_per_unit;
+    // }
+    for(let i = 0 ; i< this.cart.length ; i++)
+    {
+      this.total = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
+    }
+    this.grandtotal = this.total + 300;
+    console.log(this.total);
+    this.global.set_Cart(this.cart);
+  }
+  totalsum(): void {
+    this.total = 0;
+    // for ( this.item of this.cart) {
+    //   this.total =  this.total + this.item.price_per_unit;
+    // }
+    for(let i = 0 ; i< this.cart.length ; i++)
+    {
+      this.total = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
+    }
+    this.grandtotal = this.total + 300;
+    console.log(this.total);
+    
+  }
+  async plus(i: any) {
+      
+      this.cart[i].quantity++;
+     // this.total = this.total + this.cart[i].price_per_unit;
+    await this.totalsum();
+    
+  }
+ async minus(i: any) {
+    
+      this.cart[i].quantity--;
+      //this.total = this.total - this.cart[i].price_per_unit;
+     await this.totalsum();
   
-}
+  }
+  checkout(): void{
+
+    this.global.User.subscribe(res => {
+      this.user = res;
+      console.log(this.user);
+    });
+    if(this.user === '')
+    {
+      this.router.navigate(['login']);
+    }
+    else{
+      console.log('ali');
+      this.router.navigate(['confirm']);
+      
+    }
+    console.log(this.cart);
+   
+  }
 }

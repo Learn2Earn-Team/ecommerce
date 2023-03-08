@@ -1,39 +1,48 @@
-
-
-
 <ion-content>
-  <img class="as_img" src="../../../assets/ar collection.png" alt="">  
-    
+  <img class="as_img" src="../../../assets/ar collection.png" alt="">
+
   <h3>Sign Up</h3>
 
 
-<ion-list class="page-container">
-<ion-row  >
-<ion-col size="12" size-md="12">
-<ion-input [(ngModel)]="this.user.name" placeholder="Name" type="text"></ion-input>
-</ion-col>
-<ion-col size="12" size-md="12">
-<ion-input [(ngModel)]="this.user.email" placeholder="Email" type="Email"></ion-input>
-</ion-col>
-
-<ion-col size="12" size-md="12">
-  <ion-input [(ngModel)]="this.user.password" placeholder="Password" type="Password"></ion-input>
-  </ion-col>
-
-  <ion-col size="12" size-md="12">
-    <ion-input [(ngModel)]="this.user.confirm_password" placeholder="Confirm Password" type="Password"></ion-input>
-    </ion-col>
-
-    <ion-col size="12" size-md="12">
-      <ion-input [(ngModel)]="this.user.number" placeholder="Number" type="number"></ion-input>
+  <ion-list class="page-container">
+    <ion-row>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.frist_name" placeholder="First Name" type="text"></ion-input>
       </ion-col>
       <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.adress" placeholder="Adress" type="text"></ion-input>
-        </ion-col>
-</ion-row>
+        <ion-input [(ngModel)]="this.user.last_name" placeholder="Last Name" type="text"></ion-input>
+      </ion-col>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.email" placeholder="Email" type="Email"></ion-input>
+      </ion-col>
 
-<ion-button mode="ios" (click)="signup()">Submit</ion-button>
-  <p class="text">Already Have Account <b (click)="back()" >Sign In</b></p>
-</ion-list>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.password" placeholder="Password" type="Password"></ion-input>
+      </ion-col>
+
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.mobile_no" placeholder="Mobile No" type="number"></ion-input>
+      </ion-col>
+
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.address" placeholder="Address" type="number"></ion-input>
+      </ion-col>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.cnic" placeholder="CNIC" type="text"></ion-input>
+      </ion-col>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.state" placeholder="State" type="text"></ion-input>
+      </ion-col>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.city" placeholder="City" type="text"></ion-input>
+      </ion-col>
+      <ion-col size="12" size-md="12">
+        <ion-input [(ngModel)]="this.user.zip_code" placeholder="Zip_code" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-button mode="ios" (click)="signup()">Submit</ion-button>
+    <p class="text">Already Have Account <b (click)="back()">Sign In</b></p>
+  </ion-list>
 
 </ion-content>

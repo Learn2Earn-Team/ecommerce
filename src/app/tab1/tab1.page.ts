@@ -10,8 +10,14 @@ import { OnInit } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
-  constructor(public global :GlobalService , public apiCall : ApicallService, public router: Router) {}
+  public categroy: any ;
+  public feature: any ;
+  public latest: any ;
+ public carti: any;
+  // tslint:disable-next-line:max-line-length
+  public item1: any = {c_id : null , discription: null , image: null , name: null ,  price_per_unit: null , quantity: null , sc_id: null, total_quantity: null, color: null , size: null};
+  public user: any;
+  constructor(public global :GlobalService , public apicall : ApicallService, public router: Router) {}
   
   public product:any =[{p_id:"", name:"", price:"", brand: "", description:"", img:""}]
 
@@ -20,15 +26,39 @@ export class Tab1Page {
    }
 
    ngOnInit() {
-    this.get_product();
+    this.apicall.api_getcategory();
+    this.apicall.api_featureproducts();
+    this.apicall.api_latestproducts();
+    this.global.Category.subscribe(res => {
+      this.categroy = res;
+      console.log(this.categroy);
+    });
+    this.global.Feature.subscribe(res => {
+      this.feature = res;
+      console.log(this.feature);
+    });
+    this.global.Latest.subscribe(res => {
+      this.latest = res;
+      console.log(this.latest);
+    });
+    this.global.User.subscribe(res => {
+      this.user = res;
+      console.log(this.categroy);
+    });
 
   }
 
   get_product(){
-    this.apiCall.api_getproduct();
+    // this.apicall.api_getproduct();
     this.global.Product.subscribe( res =>{
       this.product = res;
     });
+  }
+
+  goto(value : any) {
+    this.router.navigate(['catagory']);
+    console.log(value);
+    this.apicall.api_productbycategory(value.c_id);
   }
   
 
@@ -90,7 +120,7 @@ export class Tab1Page {
    };
 
    detail(d: any){
-    this.global.set_nextproduct(d);
+    // this.global.set_nextproduct(d);
     console.log(d);
     this.router.navigate(['product'])
    }
@@ -99,7 +129,7 @@ export class Tab1Page {
    catag(){
     this.router.navigate(['catagory'])
    }
-
+  
 
 public categ: any =[{name: "Men"},{name: "Women"},{name: "Clothing"},{name: "Summer"},{name: "Winter"}]
 

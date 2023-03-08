@@ -9,16 +9,15 @@
         <ion-card-title class="t1">Category</ion-card-title>
 
             <ion-menu-toggle [autoHide]="false" *ngFor="let m of menu; let i = index">
-              <ion-card class="mn" id="menu-button"  (click)="clickMenuItem = i" routerDirection="root" [routerLink]="[m.path]" routerLinkActive="selected" detail="false">
+              <ion-card class="mn" id="menu-button"  (click)="goto(m)">
     
                 <div class="style"></div>
                 <ion-item lines="none">
-                  <ion-icon name="{{m.icon}}" slot="start"></ion-icon>
-                  <ion-label>{{m.name}}</ion-label>
+                  <img src="{{m.image}}" style="width: 37px;
+                  padding: 10px;" alt="">
+                  <!-- <ion-icon name="{{m.image}}" slot="start"></ion-icon> -->
+                  <ion-label>{{m.c_name}}</ion-label>
                 </ion-item>
-    
-
-
           </ion-card>
         </ion-menu-toggle>
       </ion-content>
