@@ -67,7 +67,6 @@ export class Tab1Page {
   {name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
-
   slideOptsOne = {
     initialSlide: 0,
 
@@ -93,31 +92,19 @@ export class Tab1Page {
         slidesPerView: 4,
       },
 
-      850: {
-        slidesPerView: 4.5,
+     
+      1060: {
+        slidesPerView: 4,
       },
 
-      920: {
+      1350: {
         slidesPerView: 5,
       },
-      
-      1060: {
-        slidesPerView: 5.5,
-      },
 
-      1120: {
-        slidesPerView: 6,
-      },
-
-      1380: {
-        slidesPerView: 7,
-      },
-
-      1550: {
-        slidesPerView: 8,
-      }
+    
     }
    };
+
 
    detail(d: any){
     // this.global.set_nextproduct(d);

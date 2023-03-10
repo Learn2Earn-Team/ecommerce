@@ -1,20 +1,85 @@
 <ion-content mode="ios">
 
   <ion-card class="nav">
-
    
-    <ion-menu-toggle>
-      <ion-icon class="icn1" name="menu-outline"></ion-icon>
+
+    <img src="./../../assets/loga.png" class="logo1" alt="">
+    <h5>AR Collections</h5> 
+
+
+    <ion-menu-toggle mode="md">
+      <ion-icon class="icn1" name="ellipsis-vertical"></ion-icon>
     </ion-menu-toggle>
     <!-- <ion-icon  name="grid-outline" (click)="catag()"></ion-icon> -->
     <ion-icon class="icn" name="cart-outline" (click)="cart()"></ion-icon>
+    <ion-icon class="nicn" name="notifications-outline" (click)="cart()"></ion-icon>
+    <ion-icon class="nicn" name="search-outline" (click)="cart()"></ion-icon>
+
+
 
 
   </ion-card>
 
+  <ion-slides pager="true">
+    <ion-slide>
+
 <ion-card class="c1">
-  <img src="./../../assets/sale-discount-banner-template-promotion-illustration-free-vector.jpg" class="im1" alt="">
+  
+  <ion-row>
+    <ion-col size="7">
+
+  <ion-card class="cc1">
+    
+    <ion-card-title class="tt1">
+      We Provide You The Best Quality Products With Best Pricing
+    </ion-card-title>
+
+  </ion-card>
+
+    </ion-col>
+
+    <ion-col size="5">
+      <img src="./../../assets/new-fashion-style-suit-sale-promotion-banner-template-free-psd-990x990.png" class="im1">
+    </ion-col>
+
+
+  </ion-row>
+
 </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+
+      <ion-card class="c1">
+        
+        <ion-row>
+          <ion-col size="7">
+      
+        <ion-card class="cc1">
+          
+          <ion-card-title class="tt1">
+            We Provide You The Best Quality Products With Best Pricing
+          </ion-card-title>
+      
+        </ion-card>
+      
+          </ion-col>
+      
+          <ion-col size="5">
+            <img src="./../../assets/777c6b38586161b2d0014135042bb58f.png" class="im1">
+          </ion-col>
+       
+      
+        </ion-row>
+      
+      </ion-card>
+      
+          </ion-slide>
+
+
+  </ion-slides>
+
 
 
 <ion-row>
@@ -49,7 +114,7 @@
 
 
             <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
-              <ion-card-title class="tl">{{d.name | slice:0:15}}{{ d.name.length > 15 ? '...' : ''}}</ion-card-title>
+              <ion-card-title class="tl">{{d.name | slice:0:14}}{{ d.name.length > 14 ? '...' : ''}}</ion-card-title>
               
 
           </ion-card-content>
@@ -75,11 +140,11 @@
 
           <ion-card-content>
 
-              <ion-card-title class="tl">{{d.name}}</ion-card-title>
-              
-              <ion-card-subtitle class="st2">Rs {{d.price_per_unit}}</ion-card-subtitle>
 
-          </ion-card-content>
+            <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
+              <ion-card-title class="tl">{{d.name | slice:0:14}}{{ d.name.length > 14 ? '...' : ''}}</ion-card-title>
+              
+</ion-card-content>
 
         </ion-card>
 
