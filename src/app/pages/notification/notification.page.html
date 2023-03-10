@@ -1,14 +1,24 @@
 
-<ion-content mode="iso">
+<ion-content mode="ios">
   
 
   <ion-card class="nav">
+   
+    <ion-back-button class="bkbtn" mode="md" defaultHref="tabs/tab1"></ion-back-button>
+
+    <img src="./../../assets/loga.png" class="logo1" alt="">
+    <h5>AR Collections</h5>  
 
 
-    <ion-back-button class="btn" mode="md" defaultHref="/"></ion-back-button>
-   <ion-title class="t1">Notifications</ion-title>
+    <ion-menu-toggle mode="md">
+      <ion-icon class="icn1" name="ellipsis-vertical"></ion-icon>
+    </ion-menu-toggle>
+    <!-- <ion-icon  name="grid-outline" (click)="catag()"></ion-icon> -->
+    <ion-icon class="icn" name="cart-outline" (click)="cart()"></ion-icon>
+    <ion-icon class="nicn" name="notifications-outline" (click)="cart()"></ion-icon>
+    <ion-icon class="nicn" name="search-outline" (click)="cart()"></ion-icon>
 
-    <ion-icon class="icn" name="cart-outline"  (click)="cart()"></ion-icon>
+
 
 
   </ion-card>
