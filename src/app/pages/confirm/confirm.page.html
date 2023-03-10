@@ -17,8 +17,16 @@
 
     <ion-col size-xs="12" size-md="8">
 
+      <ion-card class="c1" >
 
-      <ion-card class="c1">
+        <ion-item lines="none">
+          <ion-label>Send to other</ion-label>
+          <ion-toggle [(ngModel)]="send" slot="end"></ion-toggle>
+        </ion-item>
+      </ion-card>
+
+      <ion-card class="c1"*ngIf="this.send === false">
+
 
         <ion-card class="itc">
           <ion-card-subtitle>Name</ion-card-subtitle>
@@ -36,6 +44,38 @@
           <ion-card-subtitle>Address</ion-card-subtitle>
           <ion-card-title class="t11">House no 671B3 waterworks no 2 </ion-card-title>
         </ion-card>
+
+      </ion-card>
+
+      <ion-card class="c121" *ngIf="this.send=== true" >
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
+      <ion-input type="text" placeholder="Name"></ion-input>  
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="call-outline"></ion-icon> </ion-label>
+      <ion-input type="number" placeholder="Phone"></ion-input>  
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
+      <ion-input type="text" placeholder="Address"></ion-input>  
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
+      <ion-input type="text" placeholder="State"></ion-input>  
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
+      <ion-input type="text" placeholder="City"></ion-input>  
+    </ion-item>
+
 
       </ion-card>
 

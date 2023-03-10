@@ -1,6 +1,4 @@
-
 <ion-content mode="ios">
-  
 
   <ion-card class="nav">
    
@@ -23,13 +21,17 @@
 
   </ion-card>
 
+<ion-segment>
 
-  <ion-card class="c1" *ngFor="let n of not">
-<h4>{{n.name}}</h4>
-    <p>{{n.time}}</p>
-  </ion-card> 
+  <ion-segment-button value="Pending">Pending</ion-segment-button>
+  <ion-segment-button value="Completed">Completed</ion-segment-button>
+
+</ion-segment>
+
+<div [ngSwitch]="type">
 
 
-
+  
+</div>
 
 </ion-content>

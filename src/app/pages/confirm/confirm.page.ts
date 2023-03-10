@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 import { ApicallService } from 'src/app/services/apicall.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-confirm',
@@ -16,7 +17,7 @@ export class ConfirmPage implements OnInit {
   {name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
-
+public send: boolean = false;
 
   constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
 

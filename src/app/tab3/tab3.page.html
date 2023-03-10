@@ -23,7 +23,7 @@
     <ion-row>
 
       <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="setOpen(true)">
       <ion-icon name="person-outline" slot="start"></ion-icon>
       <ion-label>Edit Personal Info
         <p>Name, Phone, Email, Address</p>
@@ -32,18 +32,10 @@
     </ion-item>
 </ion-col>
 
-<ion-col size-xs="12" size-md="6">
-    <ion-item lines="full">
-      <ion-icon name="heart-outline" slot="start"></ion-icon>
-      <ion-label>Wishlist
-        <p>Your favourite products</p>
-      </ion-label>
-      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
-    </ion-item>
-    </ion-col>
+
 
     <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="order()">
       <ion-icon name="cube-outline" slot="start"></ion-icon>
       <ion-label>Orders
         <p>View your orders</p>
@@ -73,5 +65,72 @@
 </ion-col>
    </ion-row>
   </ion-card>
+
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Edit Profile Info</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)"><ion-icon name="close"></ion-icon></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Second Name</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+
+      
+        <ion-item>
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">CNIC</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">State</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Zip Code</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
+
+
+        <ion-button class="btn2">Update Profile</ion-button>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 
 </ion-content>

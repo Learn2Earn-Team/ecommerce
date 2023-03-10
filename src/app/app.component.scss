@@ -1,8 +1,19 @@
 
+ion-content{
+    --background: #255fa1;
+}
+
+ion-split-pane {
+    --side-min-width: 30px;
+    --side-max-width: 200px;
+  }
+
 .t1{
     margin: 20px;
+    margin-left: 10px;
     font-size: 18px;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 .mn{
@@ -10,17 +21,27 @@
     box-shadow: none;
     width: 100%;
     margin-top: 10px;
+    background: transparent;
+    text-align: left;
     
     ion-item{
-        font-size: 14px;
+        font-size: 10px;
+        --background: transparent;
+        color: #fff;
+        margin-left: 0;
+        --padding-start: 0;
+        text-align: left;
 
-        ion-icon{
-            font-size: 12px;
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+            object-fit: cover;
+            padding-left: 0;
         }
 
         ion-label{
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 400;
         }
 
     }

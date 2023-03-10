@@ -25,6 +25,14 @@ export class Tab1Page {
     this.router.navigate(['cart'])
    }
 
+   prof(){
+    this.router.navigate(['tabs/tab3'])
+   }
+
+   search(){
+    this.router.navigate(['tabs/tab2'])
+   }
+
    ngOnInit() {
     this.apicall.api_getcategory();
     this.apicall.api_featureproducts();
@@ -98,7 +106,7 @@ export class Tab1Page {
       },
 
       1350: {
-        slidesPerView: 5,
+        slidesPerView: 5.8,
       },
 
     

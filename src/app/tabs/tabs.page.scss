@@ -12,8 +12,8 @@ ion-tab-bar{
 }
 
 
-// @media only screen and (min-width: 600px) {
-//     ion-tab-bar{
-//         display: none;
-//     }
-// }
+@media only screen and (min-width: 600px) {
+    ion-tab-bar{
+        display: none;
+    }
+}
