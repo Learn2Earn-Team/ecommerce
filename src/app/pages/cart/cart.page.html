@@ -30,6 +30,8 @@
   </ion-list>
 
   <ion-list  *ngIf = "this.cart.length !== 0">
+    <ion-row>
+    <ion-col size-xs="12" size-md="7">
   <ion-card class="c1">
     
     <ion-item class="it1" lines="none" *ngFor="let d of cart ; let i = index" >
@@ -56,8 +58,9 @@
     </ion-item>
 
   </ion-card>
+</ion-col>
 
-
+<ion-col size-xs="12" size-md="5">
   <ion-card class="c1">
 
     <ion-item lines="none" class="it2">
@@ -79,5 +82,7 @@
   </ion-card>
 
   <ion-button class="btn1" (click)="checkout()">Check Out</ion-button>
+  </ion-col>
+  </ion-row>
 </ion-list>
 </ion-content>
