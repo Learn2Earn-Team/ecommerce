@@ -112,6 +112,7 @@ export class ApicallService {
         console.log(this.response);
         
         if (this.response.error === false) {
+          this.router.navigate(['login'])
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -164,5 +165,9 @@ export class ApicallService {
     );
   }
 
+
+
+
+ 
   //category
 }

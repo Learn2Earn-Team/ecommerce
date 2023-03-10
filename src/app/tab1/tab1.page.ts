@@ -117,7 +117,7 @@ export class Tab1Page {
    detail(d: any){
     // this.global.set_nextproduct(d);
     console.log(d);
-    this.router.navigate(['product'])
+    this.router.navigate(['product'] , {state : {data : d}});
    }
 
 

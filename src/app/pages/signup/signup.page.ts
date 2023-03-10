@@ -17,7 +17,7 @@ export class SignupPage implements OnInit {
    signup(){
     console.log(this.user)
     this.apicall.api_createuser(this.user);
-
+    
   }
   back(){
     this.router.navigate(['login'])
