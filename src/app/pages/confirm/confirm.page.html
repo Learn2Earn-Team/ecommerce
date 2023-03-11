@@ -30,19 +30,19 @@
 
         <ion-card class="itc">
           <ion-card-subtitle>Name</ion-card-subtitle>
-          <ion-card-title class="t11">Usman Khawar</ion-card-title>
+          <ion-card-title class="t11">{{this.order.customer.frist_name}} {{this.order.customer.last_name}}</ion-card-title>
 
         </ion-card>
 
         <ion-card class="itc">
           <ion-card-subtitle>Phone no</ion-card-subtitle>
-          <ion-card-title class="t11">+923095646842</ion-card-title>
+          <ion-card-title class="t11">{{this.order.customer.mobile_no}}</ion-card-title>
         </ion-card>
 
 
         <ion-card class="itc">
           <ion-card-subtitle>Address</ion-card-subtitle>
-          <ion-card-title class="t11">House no 671B3 waterworks no 2 </ion-card-title>
+          <ion-card-title class="t11">{{this.order.customer.address}}</ion-card-title>
         </ion-card>
 
       </ion-card>
@@ -106,21 +106,21 @@
         <ion-col size="12">
           <ion-item lines="none">
             <ion-label><ion-card-title class="t3">Subtotal</ion-card-title></ion-label>
-            <ion-card-subtitle class="st3"> Rs 14800</ion-card-subtitle>
+            <ion-card-subtitle class="st3"> {{this.order.customer.total}}</ion-card-subtitle>
           </ion-item>
         </ion-col>
 
         <ion-col size="12">
           <ion-item>
-            <ion-label><ion-card-title class="t3">Delivery</ion-card-title></ion-label>
-            <ion-card-subtitle class="st3"> Rs 200</ion-card-subtitle>
+            <ion-label><ion-card-title class="t3">Discount</ion-card-title></ion-label>
+            <ion-card-subtitle class="st3"> None</ion-card-subtitle>
           </ion-item>
         </ion-col>
 
         <ion-col size="12">
           <ion-item lines="none">
             <ion-label><ion-card-title class="t3">Total</ion-card-title></ion-label>
-            <ion-card-subtitle class="st3"> Rs 15000</ion-card-subtitle>
+            <ion-card-subtitle class="st3"> {{this.order.customer.total}}</ion-card-subtitle>
           </ion-item>
         </ion-col>
 
@@ -139,6 +139,6 @@
   </ion-row>
 
 
-  <ion-button class="btn1">Buy now</ion-button>
+  <ion-button class="btn1" (click)="buynow()">Buy now</ion-button>
 
 </ion-content>

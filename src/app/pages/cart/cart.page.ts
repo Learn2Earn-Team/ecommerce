@@ -86,7 +86,13 @@ export class CartPage implements OnInit {
     }
     else{
       console.log('ali');
-      this.router.navigate(['confirm']);
+      this.order.customer= this.user.user
+      this.order.customer.total = this.grandtotal;
+      this.order.cart = this.cart;
+      console.log(this.order);
+      
+      this.router.navigate(['confirm'] , {state : {data : this.order}});
+      
       
     }
     console.log(this.cart);
