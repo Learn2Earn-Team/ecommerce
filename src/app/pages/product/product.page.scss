@@ -26,11 +26,6 @@ ion-content{
     text-align: center;
     margin-bottom: 50px;
 
-    ion-card{
-        box-shadow: none;
-        margin-left: 0;
-        margin-right: 0;
-    }
 
     ion-card-header{
         text-align: left;
@@ -203,6 +198,12 @@ h6{
 
 @media only screen and (max-width: 600px) {
 
+    ion-card{
+        box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
     .nicn{
         display: none;
     }
@@ -214,6 +215,9 @@ h6{
     .logo1{
         display: none;
     }
+
+
+  
 
     // h5{
     //     display: none   ;
