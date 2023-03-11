@@ -18,7 +18,7 @@ export class ConfirmPage implements OnInit {
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
 public send: boolean = false;
-
+  public order: any;
   constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
 
   ngOnInit() {
@@ -26,6 +26,13 @@ public send: boolean = false;
       this.cart = res;
       console.log(this.cart);
     });
+    this.order = history.state.data;
+    console.log(this.order);
+    
+  }
+
+  buynow(){
+    this.apicall.api_addorder(this.order);
   }
 
 }
