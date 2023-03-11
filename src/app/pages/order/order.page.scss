@@ -1,6 +1,7 @@
 
 ion-content{
     --padding-top: 80px;
+    --background: #fff7f7;
 }
 
 .nav{
@@ -85,10 +86,11 @@ ion-content{
   
   @media only screen and (max-width: 600px) {
   
+ 
+
     .nicn{
         display: none;
     }
-  
   
   
     .nav{
@@ -103,3 +105,110 @@ ion-content{
     }
   
   }
+
+
+  ion-segment{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .c1{
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .main{
+     
+    h3{
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-left: 3%;
+        color: #070707;
+    }
+
+    p{
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-left: 3%;
+    }
+  
+
+  .order{
+    box-shadow: none;
+  
+  
+.img{
+    img{
+        height: 100px;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
+ 
+  h4{
+    font-size: 15px;
+    font-weight: 400;
+    color: #070707;
+    margin-bottom: 0;
+  }
+
+  h5{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #070707
+  }
+
+  p{
+    font-size: 14px;
+    margin: 0;
+  }
+
+}
+
+h2{
+    float: right;
+    margin-right: 2%;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000;
+    b{
+        font-size: 16px;
+        color: var(--ion-color-primary);
+    }
+}
+
+  }
+
+
+  @media only screen and (max-width: 600px) {
+  
+
+    .c1{
+      width: 100%;
+      margin: 0;
+    }
+
+    ion-content{
+        --background: #fff;
+    }
+
+    .main{
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+    .order{
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 100;
+        margin-left: 10px;
+    }
+}

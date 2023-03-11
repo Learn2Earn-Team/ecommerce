@@ -1,23 +1,30 @@
 
+<ion-content mode="ios">
+  <img class="img" src="../../../assets/ar collection.png" alt="">  
+    
+  
 
+  <ion-card class="c1">
 
-<ion-content>
-        <img class="as_img" src="../../../assets/ar collection.png" alt="">  
-          
-        <h3>Login</h3>
+    <ion-card-title class="t2">Sign In</ion-card-title>
+    <ion-card-title class="t3">Access to your account</ion-card-title>
 
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input [(ngModel)]="this.user.username" placeholder="Email" type="Email"></ion-input>
+    </ion-item>
 
- <ion-list class="page-container">
-  <ion-row  >
-   <ion-col size="12" size-md="12">
-    <ion-input  [(ngModel)]="this.user.username" placeholder="Email" type="Email"></ion-input>
-    </ion-col>
-    <ion-col size="12" size-md="12">
+    <ion-item lines="none">
+      <ion-label><ion-icon name="lock-closed-outline"></ion-icon> </ion-label>
       <ion-input [(ngModel)]="this.user.password"  placeholder="Password" type="Password"></ion-input>
-      </ion-col>
-  </ion-row>
+    </ion-item>
+    <!-- <ion-card-title class="t1">Forgot Password?</ion-card-title> -->
 
-  <ion-button mode="ios" (click)="login()">Login</ion-button>
-</ion-list>
-<p class="text">Don't Have an Account <b (click)="next()" >Sign Up</b></p>
+    <ion-button class="btn1" (click)="login()">Login</ion-button>
+
+
+<p class="text">Don't Have an Account? <b (click)="next()" >Sign Up</b></p>
+  </ion-card>
+
+
 </ion-content>

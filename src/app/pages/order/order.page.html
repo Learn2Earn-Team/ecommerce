@@ -21,17 +21,75 @@
 
   </ion-card>
 
-<ion-segment>
 
+
+<ion-segment mode="md" [(ngModel)]="type" (ionChange)="segmentChanged($event)" scrollable>
   <ion-segment-button value="Pending">Pending</ion-segment-button>
   <ion-segment-button value="Completed">Completed</ion-segment-button>
-
 </ion-segment>
 
-<div [ngSwitch]="type">
+
+  <div [ngSwitch]="type">
+
+    <ion-card class="c1" *ngSwitchCase="'Pending'">
 
 
+      <ion-card class="main">
+        <h3>Order #8726637152</h3>
+        <p>Placed on 10 Mar 2023</p>
+        <ion-card class="order">
+          <ion-row>
   
-</div>
+            <ion-col size-xs="3.5" size-md="2">
+              <div class="img">
+                <img src="./../../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp" alt="">
+              </div>
+            </ion-col>
+  
+            <ion-col size-xs="8.5" size-md="10">
+              <h4>Product name jsiasio iodiasa sdacsad</h4>
+              <h5>Rs 25000</h5>
+              <p>Quantity: 1</p>
+            </ion-col>
+  
+          </ion-row>
+        </ion-card>
+
+        <h2>Total: <b>Rs 25500</b></h2>
+  
+      </ion-card>
+    </ion-card>
+  
+    <ion-card class="c1" *ngSwitchCase="'Completed'">
+
+
+      <ion-card class="main">
+        <h3>Order #6523466372</h3>
+        <p>Placed on 28 Feb 2023</p>
+        <ion-card class="order">
+          <ion-row>
+  
+            <ion-col size-xs="3.5" size-md="2">
+              <div class="img">
+                <img src="./../../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp" alt="">
+              </div>
+            </ion-col>
+  
+            <ion-col size-xs="8.5" size-md="10">
+              <h4>Product name jsiasio iodiasa sdacsad</h4>
+              <h5>Rs 17000</h5>
+              <p>Quantity: 1</p>
+            </ion-col>
+  
+          </ion-row>
+        </ion-card>
+
+        <h2>Total: <b>Rs 17500</b></h2>
+  
+      </ion-card>
+    </ion-card>
+  
+    
+  </div>
 
 </ion-content>
