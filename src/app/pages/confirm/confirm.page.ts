@@ -32,7 +32,12 @@ public send: boolean = false;
   }
 
   buynow(){
+    console.log(this.order);
+    
     this.apicall.api_addorder(this.order);
+    this.order = '';
+    this.cart = ''
+    this.global.set_Cart(this.cart)
   }
 
 }

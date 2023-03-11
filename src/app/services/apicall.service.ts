@@ -84,6 +84,9 @@ export class ApicallService {
       (res) => {
         this.response = JSON.parse(String(res).toString());
         if (this.response.error === false) {
+          console.log(this.response);
+          this.router.navigate(['order'])
+          
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -92,6 +95,10 @@ export class ApicallService {
             timer: 2000,
           });
           return 'order is placed';
+        }
+        else {
+          console.log('zaib');
+          
         }
       },
       (err) => {
