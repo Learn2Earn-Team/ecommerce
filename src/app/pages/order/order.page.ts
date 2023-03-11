@@ -28,7 +28,7 @@ export class OrderPage implements OnInit {
   ngOnInit() {
   }
 
-  type = 'pending';
+  type = 'Pending';
 
 
 

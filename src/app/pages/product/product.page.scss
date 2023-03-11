@@ -1,3 +1,7 @@
+ion-content{
+    --padding-top: 60px;
+}
+
 .nav{
     position: fixed;
     z-index: 999;
@@ -21,6 +25,13 @@
     box-shadow: none;
     text-align: center;
     margin-bottom: 50px;
+
+    ion-card{
+        box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
     ion-card-header{
         text-align: left;
 
@@ -33,13 +44,15 @@
 
     img{
         height: 60vh;
+        border-radius: 20px;
         object-fit: cover;
         background: rgba(255, 238, 255, 0.687);
+        border-bottom: 1px solid #eee;
     }
 }
 
 ion-card-title{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .tt1{
@@ -62,17 +75,7 @@ ion-card-title{
     margin-left: 0;
 }
 
-.btn1{
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    width: 90%;
-    margin-left: 5%;
-    margin-bottom: 5px;
-    --border-radius: 15px; 
-}
+
 
 h6{
     float: left;
@@ -80,4 +83,154 @@ h6{
     margin-top: 10px;
     font-size: 14px;
     margin-right: 5px;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .btn1{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        margin-top: 40px;
+        --border-radius: 15px; 
+    }
+
+    .c1{
+        margin-top: 10vh;
+
+    }
+    
+}
+
+@media only screen and (max-width: 600px) {
+.btn1{
+
+
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    --border-radius: 15px; 
+}
+
+}
+
+
+
+.nav{
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: #fff;
+    margin: 0;
+    padding-top: 10px;
+    
+    .logo1{
+        height: 60px;
+        width: 60px;
+        border-radius: 10px;
+        float: left;
+        margin: 0;
+    }
+
+    h5{
+        float: left;
+        margin-top: 20px;
+        color: var(--ion-color-primary);
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 16px;
+        margin-left: 0;
+    }
+
+    ion-menu-toggle{
+        float: right;
+        margin: 0;
+        width: 35px;
+        padding: 0;
+    }
+
+    .icn{
+
+        font-size: 20px;
+        float: right;
+        margin: 10px;
+        padding-top: 10px;
+        border-radius: 50px;
+        color: #070707;
+    }
+
+
+    .nicn{
+
+        font-size: 20px;
+        float: right;
+        margin: 10px;
+        margin-right: 0;
+        padding: 10px;
+        border-radius: 50px;
+        color: #070707;
+    }
+
+
+
+    .icn1{
+
+        font-size: 20px;
+        float: left;
+        margin: 0px;
+        margin-top: 20px;
+        padding: 0px;
+        border-radius: 30px;
+        color: #070707;
+    }
+
+    .bkbtn{
+        float: left;
+        margin: 0;
+        margin-top: 6px;
+    }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .nicn{
+        display: none;
+    }
+
+ 
+
+    .nav{
+
+    .logo1{
+        display: none;
+    }
+
+    // h5{
+    //     display: none   ;
+    // }
+    }
+
+}
+
+.t22{
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.share{
+    float: right;
+    margin-top: 36px;
+    font-size: 20px;
 }

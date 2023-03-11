@@ -1,48 +1,78 @@
-<ion-content>
-  <img class="as_img" src="../../../assets/ar collection.png" alt="">
+<ion-content mode="ios">
+  <img class="img" src="../../../assets/ar collection.png" alt="">  
+    
+  
 
-  <h3>Sign Up</h3>
+  <ion-card class="c1">
+
+    <ion-card-title class="t2">Sign Up</ion-card-title>
+    <ion-card-title class="t3">Create a new account</ion-card-title>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
+      <ion-input type="text"  [(ngModel)]="this.user.frist_name" placeholder="First Name" ></ion-input>  
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
+      <ion-input type="text"  [(ngModel)]="this.user.last_name" placeholder="Last Name" ></ion-input>  
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input type="email" [(ngModel)]="this.user.email" placeholder="Email"></ion-input>  
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="lock-closed-outline"></ion-icon> </ion-label>
+      <ion-input type="password" [(ngModel)]="this.user.password" placeholder="Password"></ion-input>
+    </ion-item>
 
 
-  <ion-list class="page-container">
-    <ion-row>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.frist_name" placeholder="First Name" type="text"></ion-input>
-      </ion-col>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.last_name" placeholder="Last Name" type="text"></ion-input>
-      </ion-col>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.email" placeholder="Email" type="Email"></ion-input>
-      </ion-col>
+    <ion-item lines="none">
+      <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
+      <ion-input type="text" [(ngModel)]="this.user.cnic" placeholder="cnic" ></ion-input>  
+    </ion-item>
 
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.password" placeholder="Password" type="Password"></ion-input>
-      </ion-col>
 
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.mobile_no" placeholder="Mobile No" type="text"></ion-input>
-      </ion-col>
+  
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input type="text" [(ngModel)]="this.user.address" placeholder="Address"></ion-input>  
+    </ion-item>
 
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.address" placeholder="Address" type="text"></ion-input>
-      </ion-col>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.cnic" placeholder="CNIC" type="text"></ion-input>
-      </ion-col>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.state" placeholder="State" type="text"></ion-input>
-      </ion-col>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.city" placeholder="City" type="text"></ion-input>
-      </ion-col>
-      <ion-col size="12" size-md="12">
-        <ion-input [(ngModel)]="this.user.zip_code" placeholder="Zip_code" type="text"></ion-input>
-      </ion-col>
-    </ion-row>
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input type="text" [(ngModel)]="this.user.state" placeholder="State" ></ion-input>  
+    </ion-item>
 
-    <ion-button mode="ios" (click)="signup()">Submit</ion-button>
-    <p class="text">Already Have Account <b (click)="back()">Sign In</b></p>
-  </ion-list>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input type="text" [(ngModel)]="this.user.city" placeholder="City" ></ion-input>  
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="trail-sign-outline"></ion-icon> </ion-label>
+      <ion-input type="number" [(ngModel)]="this.user.zip_code" placeholder="Zip_code"></ion-input>  
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="call-outline"></ion-icon> </ion-label>
+      <ion-input type="number" [(ngModel)]="this.user.mobile_no" placeholder="Mobile No"></ion-input>  
+    </ion-item>
+
+   
+
+    <p class="text">Already Have an Account? <b (click)="back()" >Sign In</b></p>
+
+
+
+    <ion-button class="btn1" (click)="signup()">Sign Up</ion-button>
+
+
+  </ion-card>
+
 
 </ion-content>

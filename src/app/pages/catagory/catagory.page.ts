@@ -46,6 +46,15 @@ export class CatagoryPage implements OnInit {
     this.router.navigate(['cart'])
    }
 
+   prof(){
+    this.router.navigate(['tabs/tab3'])
+   }
+
+   search(){
+    this.router.navigate(['tabs/tab2'])
+   }
+
+
    type = 'deposit';
 
 
