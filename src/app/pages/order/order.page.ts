@@ -31,6 +31,10 @@ export class OrderPage implements OnInit {
     this.router.navigate(['tabs/tab2'])
    }
 
+   next(){
+    this.router.navigate(['order-detail'])
+   }
+
 
   ngOnInit() {
   }
