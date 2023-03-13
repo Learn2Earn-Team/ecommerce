@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
@@ -17,12 +18,12 @@ export class CartPage implements OnInit {
   public user :  any |'';
   // tslint:disable-next-line:max-line-length
   order: any = {customer: {frist_name: null, last_name: null,  email: null , mobile_no: null , address: null, cnic: null, city: null, state: null , zip_code: null , total : null}, cart: {}};
-   
-  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
+
+  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService,public toast : ToastService) { }
 
   async ionViewDidEnter(){
    await this.ngOnInit();
-  } 
+  }
 
  async ngOnInit() {
    // this.cart =  history.state.data;
@@ -34,7 +35,7 @@ export class CartPage implements OnInit {
   }
  async remove(i: any){
     this.cart.splice(i, 1);
-    
+
     this.total = 0;
     // for ( this.item of this.cart) {
     //   this.total =  this.total + this.item.price_per_unit;
@@ -46,6 +47,8 @@ export class CartPage implements OnInit {
     this.grandtotal = this.total + 300;
     console.log(this.total);
     this.global.set_Cart(this.cart);
+
+    this.toast.presentToast("Removed from Cart")
   }
   totalsum(): void {
     this.total = 0;
@@ -58,21 +61,21 @@ export class CartPage implements OnInit {
     }
     this.grandtotal = this.total + 300;
     console.log(this.total);
-    
+
   }
   async plus(i: any) {
-      
+
       this.cart[i].quantity++;
      // this.total = this.total + this.cart[i].price_per_unit;
     await this.totalsum();
-    
+
   }
  async minus(i: any) {
-    
+
       this.cart[i].quantity--;
       //this.total = this.total - this.cart[i].price_per_unit;
      await this.totalsum();
-  
+
   }
   checkout(): void{
 
@@ -90,12 +93,12 @@ export class CartPage implements OnInit {
       this.order.customer.total = this.grandtotal;
       this.order.cart = this.cart;
       console.log(this.order);
-      
+
       this.router.navigate(['confirm'] , {state : {data : this.order}});
-      
-      
+
+
     }
     console.log(this.cart);
-   
+
   }
 }

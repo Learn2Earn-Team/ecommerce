@@ -4,11 +4,11 @@
 
 
   <ion-card class="nav">
-   
+
     <ion-back-button class="bkbtn" mode="md" defaultHref="tabs/tab1"></ion-back-button>
 
     <img src="./../../assets/loga.png" class="logo1" alt="">
-    <h5>AR Collections</h5>  
+    <h5>AR Collections</h5>
 
 
     <ion-menu-toggle mode="md">
@@ -24,7 +24,7 @@
 
   </ion-card>
 
-  <ion-list *ngIf = "this.cart.length == 0">
+  <ion-list *ngIf="this.cart.length  === 0">
     <img class="cartimg" src="../../assets/undraw_empty_cart_co35.svg" alt="">
     <p  class="empty">Add to Cart Is Empty</p>
   </ion-list>
@@ -33,7 +33,7 @@
     <ion-row>
     <ion-col size-xs="12" size-md="7">
   <ion-card class="c1">
-    
+
     <ion-item class="it1" lines="none" *ngFor="let d of cart ; let i = index" >
       <ion-thumbnail slot="start">
         <img alt="Silhouette of mountains" src="{{d.image}}" />
@@ -41,8 +41,8 @@
       <ion-label>
         <h4>{{d.name}}</h4>
         <ion-card-title class="pr">Rs {{d.price_per_unit}}</ion-card-title>
-        
-        
+
+
         <br>
       <ion-button  (click)="minus(i)">
       <ion-icon name="remove" class="min"></ion-icon>
@@ -52,7 +52,7 @@
       <ion-icon name="add" class="min"  ></ion-icon>
       </ion-button>
       </ion-label>
-      
+
       <ion-button  (click)="remove(cart)"  class="del" ><ion-icon name="trash-outline" class="icn1" ></ion-icon></ion-button>
 
     </ion-item>

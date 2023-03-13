@@ -1,3 +1,4 @@
+import { ToastService } from './../services/toast.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
@@ -10,7 +11,7 @@ import { ApicallService } from 'src/app/services/apicall.service';
 })
 export class TabsPage  {
   public user: any;
-  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
+  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService,public toast : ToastService) { }
   verify(){
     this.global.User.subscribe(res => {
       this.user = res;
@@ -18,15 +19,16 @@ export class TabsPage  {
     });
     if(this.user === '')
     {
+      this.toast.presentToast("Please Login To Continue")
       this.router.navigate(['login']);
     }
     else{
       console.log('ali');
       this.router.navigate(['tabs/tab3']);
-      
+
     }
     console.log('test');
 
-    
+
   }
 }

@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
@@ -17,14 +18,14 @@ export class ProductPage implements OnInit {
   public CartData: any;
  public productdetail: any;
 
-  constructor(public router: Router, public global: GlobalService) {}
+  constructor(public router: Router, public global: GlobalService , public toast : ToastService) {}
 
  async ngOnInit() {
      this.productdetail =  history.state.data;
   await console.log(this.productdetail);
- 
+
   }
-  
+
  async addcart(item: any){
 
 
@@ -56,6 +57,7 @@ export class ProductPage implements OnInit {
 
 
     }
+    this.toast.presentToast("Added To Cart Successfully")
      this.router.navigate(['./cart']);
   }
 
@@ -74,7 +76,7 @@ export class ProductPage implements OnInit {
 
 
   //  share(){
-    
+
   //  }
 
 
