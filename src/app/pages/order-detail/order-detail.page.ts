@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
+import { ApicallService } from 'src/app/services/apicall.service';
+
 
 @Component({
   selector: 'app-order-detail',
@@ -7,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./order-detail.page.scss'],
 })
 export class OrderDetailPage implements OnInit {
-
-  constructor(public router: Router) {}
+  public detail: any;
+  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
 
 
   cart(){
@@ -24,7 +27,11 @@ export class OrderDetailPage implements OnInit {
    }
 
 
-  ngOnInit() {
+ async ngOnInit() {
+    await this.global.Orderdetail.subscribe(res => {
+      this.detail = res;
+      console.log(this.detail);
+    });
   }
 
 

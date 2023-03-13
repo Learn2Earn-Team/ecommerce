@@ -4,6 +4,7 @@ import { GlobalService } from 'src/app/services/global.service';
 import { ApicallService } from 'src/app/services/apicall.service';
 import { NavController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-confirm',
   templateUrl: './confirm.page.html',

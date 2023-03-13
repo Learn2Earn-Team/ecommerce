@@ -62,4 +62,18 @@ export class GlobalService {
   set_User(user: any): void {
     this.user.next(user);
   }
+
+  private userorder = new BehaviorSubject<any>('');
+  public Userorder = this.userorder.asObservable();
+
+  set_Userorder(userorder: any): void {
+    this.userorder.next(userorder);
+  }
+  private orderdetail = new BehaviorSubject<any>('');
+  public Orderdetail = this.orderdetail.asObservable();
+
+  set_orderdetail(orderdetail: any): void {
+    this.orderdetail.next(orderdetail);
+  }
+
 }

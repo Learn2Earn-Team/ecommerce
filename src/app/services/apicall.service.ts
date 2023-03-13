@@ -174,7 +174,30 @@ export class ApicallService {
 
 
 
-
+  api_getorderbyuser(id: any) {
+    this.authservice.getdata('getorderuser/' + id).then(
+      (result) => {
+        this.data = JSON.parse(String(result));
+        this.global.set_Userorder(this.data);
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  api_getorderdetail(id: any) {
+    this.authservice.getdata('getorderdetail/' + id).then(
+      (result) => {
+        this.data = JSON.parse(String(result));
+        this.global.set_orderdetail(this.data);
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
  
   //category
 }
