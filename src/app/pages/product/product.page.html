@@ -58,7 +58,7 @@
       <ion-card-title class="ds">Description</ion-card-title>
       <ion-row class="row_profit">
         <ion-col size="12" sizeMd="10" class="ion-text-center" >
-          <ion-input type="number" [(ngModel)]="profit" placeholder="Enter Your Profit" class="inpt"></ion-input>
+          <ion-input type="number" [(ngModel)]="this.productdetail.profit" placeholder="Enter Your Profit" class="inpt"></ion-input>
             <ion-label *ngIf="profit > max_profit "  color="danger" class="ion-text-center">Max Profit {{max_profit}} Allowed</ion-label>
         </ion-col>
 

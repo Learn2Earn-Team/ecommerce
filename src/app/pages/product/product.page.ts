@@ -25,6 +25,9 @@ export class ProductPage implements OnInit {
      this.productdetail =  history.state.data;
   await console.log(this.productdetail);
 
+
+   this.max_profit = (10 / 100) * this.productdetail.price_per_unit;
+   console.log(this.max_profit)
   }
 
  async addcart(item: any){

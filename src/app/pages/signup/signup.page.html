@@ -1,7 +1,7 @@
 <ion-content mode="ios">
-  <img class="img" src="../../../assets/ar collection.png" alt="">  
-    
-  
+  <img class="img" src="../../../assets/ar collection.png" alt="">
+
+
 
   <ion-card class="c1">
 
@@ -10,69 +10,66 @@
 
     <ion-item lines="none">
       <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
-      <ion-input type="text"  [(ngModel)]="this.user.frist_name" placeholder="First Name" ></ion-input>  
+      <ion-input type="text"  [(ngModel)]="this.user.frist_name" placeholder="First Name" ></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
-      <ion-input type="text"  [(ngModel)]="this.user.last_name" placeholder="Last Name" ></ion-input>  
+      <ion-input type="text"  [(ngModel)]="this.user.last_name" placeholder="Last Name" ></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
-      <ion-input type="email" [(ngModel)]="this.user.email" placeholder="Email"></ion-input>  
+      <ion-input type="email" [(ngModel)]="this.user.email" placeholder="Email"></ion-input>
     </ion-item>
 
-    <ion-item lines="none">
-      <ion-label><ion-icon name="lock-closed-outline"></ion-icon> </ion-label>
-      <ion-input type="password" [(ngModel)]="this.user.password" placeholder="Password"></ion-input>
-    </ion-item>
 
 
     <ion-item lines="none">
       <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
-      <ion-input type="text" [(ngModel)]="this.user.cnic" placeholder="cnic" ></ion-input>  
+      <ion-input type="text" [(ngModel)]="this.user.cnic" placeholder="cnic" ></ion-input>
     </ion-item>
 
-
-  
-    <ion-item lines="none">
-      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
-      <ion-input type="text" [(ngModel)]="this.user.address" placeholder="Address"></ion-input>  
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
-      <ion-input type="text" [(ngModel)]="this.user.state" placeholder="State" ></ion-input>  
-    </ion-item>
 
 
     <ion-item lines="none">
       <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
-      <ion-input type="text" [(ngModel)]="this.user.city" placeholder="City" ></ion-input>  
+      <ion-input type="text" [(ngModel)]="this.user.address" placeholder="Address"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input type="text" [(ngModel)]="this.user.state" placeholder="State" ></ion-input>
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
+      <ion-input type="text" [(ngModel)]="this.user.city" placeholder="City" ></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label><ion-icon name="trail-sign-outline"></ion-icon> </ion-label>
-      <ion-input type="number" [(ngModel)]="this.user.zip_code" placeholder="Zip_code"></ion-input>  
+      <ion-input type="number" [(ngModel)]="this.user.zip_code" placeholder="Zip_code"></ion-input>
     </ion-item>
 
 
-    <ion-item lines="none">
+    <ion-item lines="none" (click)="signinWithPhoneNumber()">
       <ion-label><ion-icon name="call-outline"></ion-icon> </ion-label>
-      <ion-input type="number" [(ngModel)]="this.user.mobile_no" placeholder="Mobile No"></ion-input>  
+      <ion-input type="number" [maxlength]="10" [(ngModel)]="this.user.mobile_no" placeholder="Mobile No"></ion-input>
     </ion-item>
 
-   
+
 
     <p class="text">Already Have an Account? <b (click)="back()" >Sign In</b></p>
 
 
 
-    <ion-button class="btn1" (click)="signup()">Sign Up</ion-button>
+    <ion-button class="btn1" [disabled]="this.user.mobile_no === null || this.user.zip_code === null || this.user.city === '' || this.user.state === '' || this.user.address === '' || this.user.cnic === '' || !this.user.email.includes('@gmail.com') || this.user.last_name === '' || this.user.frist_name === '' " (click)="signinWithPhoneNumber()">Request OTP</ion-button>
 
 
   </ion-card>
 
 
 </ion-content>
+<div style="margin-top: 100px;" id="sign-in-button"></div>

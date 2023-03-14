@@ -14,7 +14,8 @@ export class ToastService {
       message: msg,
       duration: 1000,
       mode : 'ios',
-      position:'top'
+      position:'top',
+      cssClass : "css_toast"
     });
     toast.present();
   }

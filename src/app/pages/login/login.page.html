@@ -1,27 +1,29 @@
 
 <ion-content mode="ios">
-  <img class="img" src="../../../assets/ar collection.png" alt="">  
-    
-  
+  <img class="img" src="../../../assets/ar collection.png" alt="">
+
+
 
   <ion-card class="c1">
 
     <ion-card-title class="t2">Sign In</ion-card-title>
     <ion-card-title class="t3">Access to your account</ion-card-title>
 
-    <ion-item lines="none">
-      <ion-label><ion-icon name="at-outline"></ion-icon> </ion-label>
-      <ion-input [(ngModel)]="this.user.username" placeholder="Email" type="Email"></ion-input>
+    <ion-item lines="none" style="padding-right: 5px; padding-bottom: 20px;">
+      <ion-label><ion-icon name="call-outline"></ion-icon> </ion-label>
+      <ion-input [(ngModel)]="this.user.mobile_no" placeholder="123456789" type="Email">
+        <ion-label style="padding: 0px 5px;">+92</ion-label>
+      </ion-input>
     </ion-item>
 
-    <ion-item lines="none">
+    <!-- <ion-item lines="none">
       <ion-label><ion-icon name="lock-closed-outline"></ion-icon> </ion-label>
       <ion-input [(ngModel)]="this.user.password"  placeholder="Password" type="Password"></ion-input>
-    </ion-item>
+    </ion-item> -->
     <!-- <ion-card-title class="t1">Forgot Password?</ion-card-title> -->
 
-    <ion-button class="btn1" (click)="login()">Login</ion-button>
-
+    <ion-button class="btn1" (click)="signinWithPhoneNumber()">Send OTP Request</ion-button>
+    <div id="sign-in-button"></div>
 
 <p class="text">Don't Have an Account? <b (click)="next()" >Sign Up</b></p>
   </ion-card>

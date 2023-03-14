@@ -86,6 +86,7 @@ export class ApicallService {
       (res) => {
         this.response = JSON.parse(String(res).toString());
         if (this.response.error === false) {
+          this.toast.presentToast("Order placed Successfully")
           console.log(this.response);
           this.router.navigate(['order'])
         }
@@ -118,7 +119,7 @@ export class ApicallService {
         console.log(this.response);
 
         if (this.response.error === false) {
-          this.router.navigate(['login'])
+          // this.router.navigate(['login'])
           // Swal.fire({
           //   position: 'top-end',
           //   icon: 'success',
@@ -126,7 +127,7 @@ export class ApicallService {
           //   showConfirmButton: false,
           //   timer: 2000,
           // });
-            this.toast.presentToast("User is Created Successfully Please Login Now")
+            this.toast.presentToast("User is Created Successfully")
         }
       },
       (err) => {
