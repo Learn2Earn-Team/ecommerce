@@ -51,29 +51,29 @@
 
     <ion-item lines="none">
       <ion-label><ion-icon name="person-outline"></ion-icon> </ion-label>
-      <ion-input type="text" placeholder="Name" [(ngModel)]="this.order.customer.frist_name" ></ion-input>  
+      <ion-input type="text" placeholder="Name" [(ngModel)]="this.order.customer.frist_name" ></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label><ion-icon name="call-outline"></ion-icon> </ion-label>
-      <ion-input type="number" placeholder="Phone" [(ngModel)]="this.order.customer.mobile_no"></ion-input>  
+      <ion-input type="number" placeholder="Phone" [(ngModel)]="this.order.customer.mobile_no"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
-      <ion-input type="text" placeholder="Address" [(ngModel)]="this.order.customer.address"></ion-input>  
-    </ion-item>
-
-
-    <ion-item lines="none">
-      <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
-      <ion-input type="text" placeholder="State" [(ngModel)]="this.order.customer.state"></ion-input>  
+      <ion-input type="text" placeholder="Address" [(ngModel)]="this.order.customer.address"></ion-input>
     </ion-item>
 
 
     <ion-item lines="none">
       <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
-      <ion-input type="text" placeholder="City" [(ngModel)]="this.order.customer.city"></ion-input>  
+      <ion-input type="text" placeholder="State" [(ngModel)]="this.order.customer.state"></ion-input>
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <ion-label><ion-icon name="location-outline"></ion-icon> </ion-label>
+      <ion-input type="text" placeholder="City" [(ngModel)]="this.order.customer.city"></ion-input>
     </ion-item>
 
 
@@ -106,6 +106,13 @@
         <ion-col size="12">
           <ion-item lines="none">
             <ion-label><ion-card-title class="t3">Subtotal</ion-card-title></ion-label>
+            <ion-card-subtitle class="st3"> {{this.order.customer.total}}</ion-card-subtitle>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-label><ion-card-title class="t3">Profit</ion-card-title></ion-label>
             <ion-card-subtitle class="st3"> {{this.order.customer.total}}</ion-card-subtitle>
           </ion-item>
         </ion-col>

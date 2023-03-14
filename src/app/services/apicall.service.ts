@@ -1,3 +1,4 @@
+import { ToastService } from './toast.service';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { GlobalService } from './global.service';
@@ -15,7 +16,8 @@ export class ApicallService {
     private router: Router,
     private authservice: AuthService,
     public global: GlobalService,
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
+    public toast : ToastService
   ) {}
 
   api_getcategory(): void {
@@ -86,58 +88,49 @@ export class ApicallService {
         if (this.response.error === false) {
           console.log(this.response);
           this.router.navigate(['order'])
-          
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Your order is placed',
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          return 'order is placed';
         }
         else {
           console.log('zaib');
-          
         }
       },
       (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong , plz try again!',
-          footer: '<a href>Why do I have this issue?</a>',
-        });
-        console.log(err);
       }
     );
   }
+
+  api_UpdateUser(data: any) {
+    this.authservice.con(data, 'updateuser').then(
+      (res) => {
+        this.response = JSON.parse(String(res).toString());
+        console.log(this.response)
+      },
+      (err) => {
+        console.log(err)
+
+      }
+    );
+  }
+
   api_createuser(data: any): void {
     this.authservice.con(data, 'signup').then(
       async (res) => {
         this.response = JSON.parse(String(res).toString());
         console.log(this.response);
-        
+
         if (this.response.error === false) {
           this.router.navigate(['login'])
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'User is created',
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          return 'order is placed';
+          // Swal.fire({
+          //   position: 'top-end',
+          //   icon: 'success',
+          //   title: 'User is created',
+          //   showConfirmButton: false,
+          //   timer: 2000,
+          // });
+            this.toast.presentToast("User is Created Successfully Please Login Now")
         }
       },
       (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong , plz try again!',
-          footer: '<a href>Why do I have this issue?</a>',
-        });
-        console.log(err);
+        this.toast.presentToast("Something Went Wronge Try Again")
       }
     );
   }
@@ -146,28 +139,30 @@ export class ApicallService {
       async (res) => {
         this.response = JSON.parse(String(res).toString());
           console.log(this.response);
-          
+
         if (this.response.error === false) {
           this.global.set_User(this.response);
            this.router.navigate(['tabs/tab1'])
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'user login ',
-            showConfirmButton: false,
-            timer: 1000,
-          });
-          return 'order is placed';
+          // Swal.fire({
+          //   position: 'top-end',
+          //   icon: 'success',
+          //   title: 'user login ',
+          //   showConfirmButton: false,
+          //   timer: 1000,
+          // });
+          // return 'order is placed';
+          this.toast.presentToast("Successfully Logged In")
         }
       },
       (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong , plz try again!',
-          footer: '<a href>Why do I have this issue?</a>',
-        });
-        console.log(err);
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: 'Something went wrong , plz try again!',
+        //   footer: '<a href>Why do I have this issue?</a>',
+        // });
+        // console.log(err);
+        this.toast.presentToast("Something Went Wronge Try Again")
       }
     );
   }
@@ -198,6 +193,6 @@ export class ApicallService {
       }
     );
   }
- 
+
   //category
 }

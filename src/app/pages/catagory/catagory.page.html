@@ -1,12 +1,12 @@
 <ion-content mode="ios">
 
- 
+
   <ion-card class="nav">
-   
+
     <ion-back-button class="bkbtn" mode="md" defaultHref="tabs/tab1"></ion-back-button>
 
     <img src="./../../assets/loga.png" class="logo1" alt="">
-    <h5>AR Collections</h5>  
+    <h5>AR Collections</h5>
 
 
     <ion-menu-toggle mode="md">
@@ -21,20 +21,20 @@
 
 
   </ion-card>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar [(ngModel)]="FilterTerm"></ion-searchbar>
 
 
   <ion-row>
-    <ion-col size-xs="6" size-md="4" size-lg="3" size-xl="2" *ngFor="let d of product">
+    <ion-col size-xs="6" size-md="4" size-lg="3" size-xl="2" *ngFor="let d of product | filter : FilterTerm">
       <ion-card class="c2" (click)="gotodetail(d)">
         <img src="{{d.image}}" alt="">
 
         <ion-card-content>
 
 
-          <ion-card-title class="st2">Rs {{d.price_per_quantity}}</ion-card-title>
+          <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
             <ion-card-title class="tl">{{d.name | slice:0:15}}{{ d.name.length > 15 ? '...' : ''}}</ion-card-title>
-            
+
 
         </ion-card-content>
 

@@ -11,10 +11,10 @@
       <div class="circle2">
         <img src="./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp" class="img">
       </div>
-      
 
 
-    <ion-card-title class="t1">Usman Khawar</ion-card-title>
+
+    <ion-card-title class="t1">{{UserData.frist_name + ' ' + UserData.last_name}}</ion-card-title>
 
   </ion-card>
 
@@ -45,7 +45,7 @@
 </ion-col>
 
 <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="notification()">
       <ion-icon name="notifications-outline" slot="start"></ion-icon>
       <ion-label>Notifications
         <p>View your notifications</p>
@@ -55,7 +55,7 @@
 </ion-col>
 
 <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="logout()">
       <ion-icon name="log-out-outline" slot="start"></ion-icon>
       <ion-label>Logout
         <p>Logout your account</p>
@@ -80,53 +80,53 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="floating">First Name</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="UserData.frist_name" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Second Name</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="UserData.last_name" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-input [(ngModel)]="UserData.e_mail" type="email"></ion-input>
         </ion-item>
 
-      
+
         <ion-item>
           <ion-label position="floating">Phone</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input [(ngModel)]="UserData.mobile_no" ></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">CNIC</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input [(ngModel)]="UserData.cnic" ></ion-input>
         </ion-item>
 
 
         <ion-item>
           <ion-label position="floating">Password</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input [(ngModel)]="UserData.password" type="password"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">State</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="UserData.state" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">City</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="UserData.city" type="text"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Zip Code</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input [(ngModel)]="UserData.zip_code" ></ion-input>
         </ion-item>
 
 
-        <ion-button class="btn2">Update Profile</ion-button>
+        <ion-button class="btn2" (click)="update_profile()">Update Profile</ion-button>
 
       </ion-content>
     </ng-template>

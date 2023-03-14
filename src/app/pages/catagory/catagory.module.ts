@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CatagoryPageRoutingModule } from './catagory-routing.module';
 
 import { CatagoryPage } from './catagory.page';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CatagoryPageRoutingModule
+    CatagoryPageRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [CatagoryPage]
 })
