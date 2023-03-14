@@ -32,7 +32,7 @@ export class ProductPage implements OnInit {
 
  async addcart(item: any){
 
-
+    item.profit = this.profit;
     let cartData:any = [];
     let cartArray :any= [];
   await this.global.Cart.subscribe(res=> {
