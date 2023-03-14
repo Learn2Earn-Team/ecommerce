@@ -16,6 +16,7 @@ export class CartPage implements OnInit {
   public item: any;
   public quantity: any = 1;
   public user :  any |'';
+  public total_profit! : number ;
   // tslint:disable-next-line:max-line-length
   order: any = {customer: {frist_name: null, last_name: null,  email: null , mobile_no: null , address: null, cnic: null, city: null, state: null , zip_code: null , total : null}, cart: {}};
 
@@ -43,9 +44,10 @@ export class CartPage implements OnInit {
     for(let i = 0 ; i< this.cart.length ; i++)
     {
       this.total = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
+      this.total_profit = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
     }
-    this.grandtotal = this.total + 300;
-    console.log(this.total);
+    this.grandtotal = this.total + 300 + this.total_profit;
+    console.log(this.total + this.total_profit);
     this.global.set_Cart(this.cart);
 
     this.toast.presentToast("Removed from Cart")
@@ -58,8 +60,9 @@ export class CartPage implements OnInit {
     for(let i = 0 ; i< this.cart.length ; i++)
     {
       this.total = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
+      this.total_profit = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
     }
-    this.grandtotal = this.total + 300;
+    this.grandtotal = this.total + 300 + this.total_profit;
     console.log(this.total);
 
   }
@@ -72,7 +75,10 @@ export class CartPage implements OnInit {
   }
  async minus(i: any) {
 
-      this.cart[i].quantity--;
+  if(this.cart[i].quantity >1){
+    this.cart[i].quantity--;
+  }
+
       //this.total = this.total - this.cart[i].price_per_unit;
      await this.totalsum();
 

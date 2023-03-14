@@ -22,10 +22,7 @@ export class Tab3Page implements OnInit {
 
 
   ngOnInit(){
-      this.global.User.subscribe(res=>{
-        console.log(res.user)
-        this.UserData = res.user
-      })
+      this.verify()
   }
   update_profile(){
     console.log(this.UserData)
@@ -68,5 +65,25 @@ export class Tab3Page implements OnInit {
     this.isModalOpen = isOpen;
   }
 
+  verify(){
+    let data ;
+    this.global.User.subscribe(res => {
+      this.UserData = res.user;
+      data = res
+      console.log(this.UserData);
+    });
+    if(data === '')
+    {
+      this.toast.presentToast("Please Login To Continue")
+      this.router.navigate(['login']);
+    }
+    else{
+      console.log('logged in');
+
+    }
+    console.log('test');
+
+
+  }
 
 }

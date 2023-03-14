@@ -17,7 +17,8 @@ export class ProductPage implements OnInit {
   public suitData: any;
   public CartData: any;
  public productdetail: any;
-
+  max_profit: number = 100 ;
+  profit! : number ;
   constructor(public router: Router, public global: GlobalService , public toast : ToastService) {}
 
  async ngOnInit() {

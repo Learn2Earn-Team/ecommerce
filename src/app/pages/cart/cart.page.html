@@ -40,7 +40,7 @@
       </ion-thumbnail>
       <ion-label>
         <h4>{{d.name}}</h4>
-        <ion-card-title class="pr">Rs {{d.price_per_unit}}</ion-card-title>
+        <ion-card-title class="pr">Price {{d.price_per_unit}} PKR | Profit {{d.price_per_unit}} PKR</ion-card-title>
 
 
         <br>
@@ -65,6 +65,11 @@
 
     <ion-item lines="none" class="it2">
       <ion-label>Subtotal</ion-label>
+      <p>{{this.total}}</p>
+    </ion-item>
+
+    <ion-item lines="none" class="it2">
+      <ion-label>Profit</ion-label>
       <p>{{this.total}}</p>
     </ion-item>
 

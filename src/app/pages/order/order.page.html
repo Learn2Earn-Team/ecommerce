@@ -1,11 +1,11 @@
 <ion-content mode="ios">
 
   <ion-card class="nav">
-   
+
     <ion-back-button class="bkbtn" mode="md" defaultHref="tabs/tab1"></ion-back-button>
 
     <img src="./../../assets/loga.png" class="logo1" alt="">
-    <h5>AR Collections</h5>  
+    <h5>AR Collections</h5>
 
 
     <ion-menu-toggle mode="md">
@@ -42,32 +42,34 @@
             <th>NAME</th>
             <th>DATE</th>
             <th>TOTAL</th>
+            <th>PROFIT</th>
             <th>Address</th>
             <th>Mobile no</th>
             <th>Staus</th>
             <th>See Details</th>
           </tr>
-    
+
           <tr class="data" *ngFor=" let d of userorder">
             <td class="data1">1</td>
             <td class="clr">#{{d.o_id}}</td>
             <td>{{d.name}}</td>
             <td>{{d.date}}</td>
             <td>Rs {{d.total}}</td>
+            <td>Rs {{d.total}}</td>
             <td style="min-width: 150px;"> {{d.address}}</td>
             <td> {{d.mobile_no}}</td>
             <td> {{d.status}}</td>
             <td class="data2">
-              <ion-icon name="arrow-forward-outline" class="icn11" (click)="next(d.o_id)"></ion-icon>  
+              <ion-icon name="arrow-forward-outline" class="icn11" (click)="next(d.o_id)"></ion-icon>
             </td>
           </tr>
-    
-    
+
+
         </table>
-    
+
       </ion-card>
     </ion-card>
-  
+
     <ion-card class="c1" *ngSwitchCase="'Completed'">
 
       <ion-card class="c2">
@@ -84,7 +86,7 @@
 
             <th>See Details</th>
           </tr>
-    
+
           <tr class="data" *ngFor=" let d of data">
             <td class="data1">1</td>
             <td class="clr">#{{d.id}}</td>
@@ -94,18 +96,18 @@
             <td style="min-width: 150px;"> {{d.address}}</td>
             <td> {{d.mobile}}</td>
             <td class="data2">
-              <ion-icon name="arrow-forward-outline" class="icn11"></ion-icon>  
+              <ion-icon name="arrow-forward-outline" class="icn11"></ion-icon>
             </td>
           </tr>
-    
-    
+
+
         </table>
-    
+
       </ion-card>
 
     </ion-card>
-  
-    
+
+
   </div>
 
 </ion-content>
