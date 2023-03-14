@@ -54,9 +54,11 @@
     </ion-item>
 
 
-    <ion-item lines="none" (click)="signinWithPhoneNumber()">
+    <ion-item lines="none" >
       <ion-label><ion-icon name="call-outline"></ion-icon> </ion-label>
-      <ion-input type="number" [maxlength]="10" [(ngModel)]="this.user.mobile_no" placeholder="Mobile No"></ion-input>
+      <ion-input type="number" [maxlength]="10" [(ngModel)]="this.user.mobile_no" placeholder="123456789">
+        <ion-label style="padding: 0px 5px;">+92</ion-label>
+      </ion-input>
     </ion-item>
 
 

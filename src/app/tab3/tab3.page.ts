@@ -46,7 +46,7 @@ export class Tab3Page implements OnInit {
    logout(){
     this.global.set_User('')
     this.toast.presentToast("Successfully Logged Out")
-    this.router.navigate(['login'])
+    this.router.navigate(['tabs/tab1'])
    }
 
    notification(){

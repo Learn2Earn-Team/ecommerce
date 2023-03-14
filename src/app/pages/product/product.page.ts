@@ -17,8 +17,8 @@ export class ProductPage implements OnInit {
   public suitData: any;
   public CartData: any;
  public productdetail: any;
-  max_profit: number = 100 ;
-  profit! : number ;
+  max_profit: number = 0 ;
+  profit : number = 0 ;
   constructor(public router: Router, public global: GlobalService , public toast : ToastService) {}
 
  async ngOnInit() {
@@ -31,8 +31,9 @@ export class ProductPage implements OnInit {
   }
 
  async addcart(item: any){
-
-    item.profit = this.profit;
+    if(!this.productdetail.profit){
+      item.profit = 0
+    }
     let cartData:any = [];
     let cartArray :any= [];
   await this.global.Cart.subscribe(res=> {

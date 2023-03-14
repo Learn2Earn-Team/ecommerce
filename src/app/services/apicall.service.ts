@@ -153,6 +153,9 @@ export class ApicallService {
           // });
           // return 'order is placed';
           this.toast.presentToast("Successfully Logged In")
+        }else if(this.response.error === true){
+          this.toast.presentToast(this.response.message + 'Please Signup')
+
         }
       },
       (err) => {
@@ -163,7 +166,6 @@ export class ApicallService {
         //   footer: '<a href>Why do I have this issue?</a>',
         // });
         // console.log(err);
-        this.toast.presentToast("Something Went Wronge Try Again")
       }
     );
   }

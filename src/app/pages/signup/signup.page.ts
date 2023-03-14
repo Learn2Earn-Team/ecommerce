@@ -82,7 +82,8 @@ async ionViewDidEnter() {
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Please Wait',
-      spinner: 'bubbles'
+      spinner: 'bubbles',
+      duration : 10000
     });
     await loading.present();
   }

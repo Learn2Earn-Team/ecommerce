@@ -5,6 +5,7 @@ import { ApicallService } from 'src/app/services/apicall.service';
 import  firebase  from 'firebase/compat/app'
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { ToastService } from 'src/app/services/toast.service';
 const environment:any = {firebaseConfig : {
  apiKey: "AIzaSyBmxCszTxO9ETX53FLurCtZVmSXz9p_c2c",
  authDomain: "realbeez-66e11.firebaseapp.com",
@@ -33,7 +34,7 @@ confirmationResult: any;
 CountryCode: any = '+92';
 
 constructor(public router: Router , public apicall: ApicallService , public global: GlobalService, private alert: AlertController,
-  private authService:  AuthService,public loading : LoadingController) { }
+  private authService:  AuthService,public loading : LoadingController , public toast : ToastService) { }
 
   ngOnInit() {
   }
@@ -56,7 +57,8 @@ constructor(public router: Router , public apicall: ApicallService , public glob
   async presentLoading() {
     const loading = await this.loading.create({
       message: 'Please Wait',
-      spinner: 'bubbles'
+      spinner: 'bubbles',
+      duration : 10000
     });
     await loading.present();
   }
@@ -102,8 +104,12 @@ async signinWithPhoneNumber() {
         console.log(success)
         this.loading.dismiss()
         this.OtpVerification();
+      }, (err)=>{
+        console.log(err)
+        this.toast.presentToast("Error Try Again After Later")
+        this.loading.dismiss()
       }
-    );
+    )
   }
 }
 
@@ -138,7 +144,6 @@ async OtpVerification() {
       handler: (res) => {
         this.authService.enterVerificationCode(res.otp).then(
           async userData => {
-            this.showSuccess();
             this.login()
           }
         );

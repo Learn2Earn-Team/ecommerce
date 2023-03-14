@@ -39,7 +39,7 @@ ion-content{
             border: 1px dashed #eee;
             margin-right: auto;
             margin-left: auto;
-            
+
 
             .img{
                 height: 100%;
@@ -47,10 +47,11 @@ ion-content{
                 border-radius: 100%;
                 object-fit: cover;
                 padding: 10px;
+                border: 1px solid var(--ion-color-primary);
             }
         }
-        
-    
+
+
 }
 
 
@@ -100,11 +101,11 @@ ion-modal{
         color: #fff;
       }
     }
-  
+
     ion-content{
       --background: #fff;
     }
-  
+
   .btn2{
     margin-left: auto;
     margin-right: auto;
@@ -115,17 +116,17 @@ ion-modal{
     width: 200px;
     height: 40px;
   }
-  
+
   ion-item{
     --background: transparent;
-  
+
     ion-select{
       margin-top: 10px;
       margin-bottom: 10px;
     }
-  
+
   }
-  
+
   .img{
     width: 70px;
     height: 70px;
@@ -135,6 +136,5 @@ ion-modal{
     margin-right: auto;
     margin-top: 15px;
   }
-  
+
   }
-  
