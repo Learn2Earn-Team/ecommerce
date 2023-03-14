@@ -44,9 +44,9 @@ export class CartPage implements OnInit {
     for(let i = 0 ; i< this.cart.length ; i++)
     {
       this.total = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
-      this.total_profit = this.total + (this.cart[i].quantity * this.cart[i].price_per_unit)
+      this.total_profit = this.total + (this.cart[i].quantity * this.cart[i].profit)
     }
-    this.grandtotal = this.total + 300 + this.total_profit;
+    this.grandtotal = this.total + 110 + this.total_profit;
     console.log(this.total + this.total_profit);
     this.global.set_Cart(this.cart);
 
