@@ -1,10 +1,10 @@
 <ion-content mode="ios">
 
   <ion-card class="nav">
-   
+
 
     <img src="./../../assets/loga.png" class="logo1" alt="">
-    <h5>AR Collections</h5> 
+    <h5>AR Collections</h5>
 
 
     <ion-menu-toggle mode="md">
@@ -20,26 +20,28 @@
 
   </ion-card>
 
-  <ion-slides pager="true">
-    <ion-slide>
+  <!-- <ion-slides pager="true" >
+    <ion-slide *ngFor="let slide of slides" >
 
 <ion-card class="c1">
-  
+
   <ion-row>
     <ion-col size="7">
 
   <ion-card class="cc1">
-    
-    <ion-card-title class="tt1">
-      We Provide You The Best Quality Products With Best Pricing
-    </ion-card-title>
 
+    <ion-card-title class="tt1">
+      {{slide.title}}
+    </ion-card-title>
+     <ion-card-content style="text-align: start;">
+      {{slide.dsc}}
+     </ion-card-content>
   </ion-card>
 
     </ion-col>
 
     <ion-col size="5">
-      <img src="./../../assets/new-fashion-style-suit-sale-promotion-banner-template-free-psd-990x990.png" class="im1">
+      <img src="{{slide.image}}" class="im1">
     </ion-col>
 
 
@@ -49,37 +51,73 @@
 
     </ion-slide>
 
-    <ion-slide>
 
-      <ion-card class="c1">
-        
-        <ion-row>
-          <ion-col size="7">
-      
-        <ion-card class="cc1">
-          
-          <ion-card-title class="tt1">
-            We Provide You The Best Quality Products With Best Pricing
-          </ion-card-title>
-      
+
+  </ion-slides> -->
+
+  <ion-row>
+    <!-- <ion-col size="12" style="padding: 0px 10px;">
+      <swiper #swiper [config]="Config" class="mySwiper2">
+        <ng-template class="s1"  *ngFor="let slide of slides" swiperSlide>
+
+
+
+        <ion-card   class="c1">
+
+          <ion-row>
+            <ion-col size="7">
+
+          <ion-card class="cc1">
+
+            <ion-card-title class="tt1">
+              {{slide.title}}
+            </ion-card-title>
+
+            <ion-card-content>
+              {{slide.dsc}}
+            </ion-card-content>
+          </ion-card>
+
+            </ion-col>
+
+            <ion-col size="5">
+              <img src="{{slide.image}}" class="im1">
+            </ion-col>
+
+
+          </ion-row>
+
         </ion-card>
-      
-          </ion-col>
-      
-          <ion-col size="5">
-            <img src="./../../assets/777c6b38586161b2d0014135042bb58f.png" class="im1">
-          </ion-col>
-       
-      
-        </ion-row>
-      
-      </ion-card>
-      
-          </ion-slide>
+        </ng-template>
+
+      </swiper>
+    </ion-col> -->
 
 
-  </ion-slides>
-
+    <ion-col size="12" class="swiper_col">
+      <swiper #swiper [config]="Config" class="mySwiper2">
+        <ng-template *ngFor="let data of slides" swiperSlide>
+          <div class="template-2">
+            <ion-row>
+              <ion-col class="col-txt" size="7">
+                <ion-label class="prefrence-title">{{data.title}}</ion-label>
+                <!-- <p class="prefrence-subt ion-no-margin"> {{data.sub_title}} </p> -->
+                <p class="prefernce-dt ion-no-margin">
+                  {{data.dsc}}
+                </p>
+              </ion-col>
+              <ion-col size="5" class="col-h col-img">
+                <img class="img2" src="{{data.image}}" alt="" />
+                <ion-label class="prefrence-set">
+                  <!-- {{data.image_txt}} -->
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ng-template>
+      </swiper>
+    </ion-col>
+  </ion-row>
 
 
 <ion-row>
@@ -92,7 +130,7 @@
     <div class="bd" (click)="goto(c)">
       <img src="{{c.image}}" alt="">
       <h6>{{c.c_name}}</h6>
-    </div>  
+    </div>
 
   </ion-slide>
 </ion-slides>
@@ -115,20 +153,20 @@
 
             <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
               <ion-card-title class="tl">{{d.name | slice:0:14}}{{ d.name.length > 14 ? '...' : ''}}</ion-card-title>
-              
+
 
           </ion-card-content>
 
         </ion-card>
 
       </ion-slide>
-  
+
 </ion-slides>
 
 
 
 <ion-row>
-  <ion-card-title class="t2">Men Collection</ion-card-title>
+  <ion-card-title class="t2">Latest Collections</ion-card-title>
 </ion-row>
 
 <ion-slides [options]="slideOptsOne">
@@ -143,15 +181,40 @@
 
             <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
               <ion-card-title class="tl">{{d.name | slice:0:14}}{{ d.name.length > 14 ? '...' : ''}}</ion-card-title>
-              
+
 </ion-card-content>
 
         </ion-card>
 
       </ion-slide>
-  
+
 </ion-slides>
 
+<ion-row>
+  <ion-card-title class="t2">More Products</ion-card-title>
+</ion-row>
+
+<ion-row class="prod_row">
+  <ion-col size-xs="6" size-sm="4" size-md="3" size-lg="2.4" *ngFor="let d of items">
+    <ion-card class="c2" (click)="detail(d)">
+      <img loading="lazy" src="{{d.image}}" alt="">
+
+      <ion-card-content>
+
+
+        <ion-card-title class="st2">Rs {{d.price_per_unit}}</ion-card-title>
+          <ion-card-title class="tl">{{d.name | slice:0:15}}{{ d.name.length > 15 ? '...' : ''}}</ion-card-title>
+
+      </ion-card-content>
+
+    </ion-card>
+
+
+  </ion-col>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-row>
 </ion-content>
 
 

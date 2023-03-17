@@ -2,6 +2,9 @@ import { ToastService } from './../../services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
+import { Share } from '@capacitor/share';
+import { HttpClient } from '@angular/common/http';
+import { switchMap, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +12,7 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./product.page.scss'],
 })
 export class ProductPage implements OnInit {
+  total : number = 0 ;
   public item1: any = {c_id : null , discription: null , image: null , name: null ,  price_per_unit: null , quantity: null , sc_id: null, total_quantity: null, color: null , size: null};
   public cart: {}[] = [];
   public cart1: any = {};
@@ -19,15 +23,14 @@ export class ProductPage implements OnInit {
  public productdetail: any;
   max_profit: number = 0 ;
   profit : number = 0 ;
-  constructor(public router: Router, public global: GlobalService , public toast : ToastService) {}
+  blob : any ;
+  constructor(public router: Router, public global: GlobalService , public toast : ToastService , public http : HttpClient ) {
+
+  }
 
  async ngOnInit() {
      this.productdetail =  history.state.data;
-  await console.log(this.productdetail);
-
-
-   this.max_profit = (10 / 100) * this.productdetail.price_per_unit;
-   console.log(this.max_profit)
+   this.max_profit = 2000
   }
 
  async addcart(item: any){
@@ -61,6 +64,7 @@ export class ProductPage implements OnInit {
     }
 
 
+
     }
     this.toast.presentToast("Added To Cart Successfully")
      this.router.navigate(['./cart']);
@@ -78,6 +82,44 @@ export class ProductPage implements OnInit {
     this.router.navigate(['tabs/tab2'])
    }
 
+   Share(){
+    if(this.productdetail.profit){
+      this.total = this.productdetail.price_per_unit + this.productdetail.profit
+    }else{
+      this.total = this.productdetail.price_per_unit
+    }
+    return Share.share({
+      title: this.productdetail.name ,
+      text: "Checkout This Product: " + this.productdetail.name + " Price:  " + this.total + " PKR " ,
+      url: this.productdetail.image,
+    });
+
+  //   this.http.get(this.productdetail.image, { responseType: 'blob' })
+  //     .pipe(
+  //       switchMap(blob => this.convertBlobToBase64(blob))
+  //     )
+  //     .subscribe(base64ImageUrl => console.log(base64ImageUrl));
+  // }
+
+  // convertBlobToBase64(blob: Blob) {
+  //   return Observable.create((observer:any) => {
+  //     const reader = new FileReader();
+  //     const binaryString = reader.readAsDataURL(blob);
+  //     reader.onload = (event: any) => {
+  //       console.log('Image in Base64: ', event.target.result);
+  //       observer.next(event.target.result);
+  //       observer.complete();
+  //     };
+
+  //     reader.onerror = (event: any) => {
+  //       console.log("File could not be read: " + event.target.error.code);
+  //       observer.next(event.target.error.code);
+  //       observer.complete();
+  //     };
+  //   });
+  }
+
+   }
 
 
   //  share(){
@@ -85,4 +127,4 @@ export class ProductPage implements OnInit {
   //  }
 
 
-}
+

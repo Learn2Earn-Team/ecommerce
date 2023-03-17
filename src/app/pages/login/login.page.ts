@@ -6,6 +6,7 @@ import  firebase  from 'firebase/compat/app'
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
+import { StorageService } from 'src/app/services/storage.service';
 const environment:any = {firebaseConfig : {
  apiKey: "AIzaSyBmxCszTxO9ETX53FLurCtZVmSXz9p_c2c",
  authDomain: "realbeez-66e11.firebaseapp.com",
@@ -33,7 +34,7 @@ public recaptchaVerifier?: firebase.auth.RecaptchaVerifier;
 confirmationResult: any;
 CountryCode: any = '+92';
 
-constructor(public router: Router , public apicall: ApicallService , public global: GlobalService, private alert: AlertController,
+constructor(public storage : StorageService, public router: Router , public apicall: ApicallService , public global: GlobalService, private alert: AlertController,
   private authService:  AuthService,public loading : LoadingController , public toast : ToastService) { }
 
   ngOnInit() {
@@ -46,7 +47,6 @@ constructor(public router: Router , public apicall: ApicallService , public glob
   login(){
     this.apicall.api_signin(this.user);
     console.log(this.user)
-
   }
   next(){
 
@@ -75,24 +75,25 @@ async ionViewDidEnter() {
     }
   });
 }
-// ionViewDidLoad() {
-//   this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-//     size: 'invisible',
-//     callback: (response:any) => {
-//       console.log(response)
-//       console.log(this.recaptchaVerifier)
-//     },
-//     'expired-callback': () => {
-//     }
-//   });
-// }
+ionViewDidLoad() {
+  this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+    size: 'invisible',
+    callback: (response:any) => {
+      console.log(response)
+      console.log(this.recaptchaVerifier)
+    },
+    'expired-callback': () => {
+    }
+  });
+}
 
 // countryCodeChange($event: any) {
 //   this.CountryCode = $event.detail.value;
 //   console.log(this.CountryCode)
 // }
 // Button event after the nmber is entered and button is clicked
-async signinWithPhoneNumber() {
+
+async  signinWithPhoneNumber() {
   await this.presentLoading()
   console.log(this.user)
   console.log('country', this.recaptchaVerifier);
@@ -106,7 +107,7 @@ async signinWithPhoneNumber() {
         this.OtpVerification();
       }, (err)=>{
         console.log(err)
-        this.toast.presentToast("Error Try Again After Later")
+        this.toast.presentToast("Error If Keep Showing Try Restarting App")
         this.loading.dismiss()
       }
     )

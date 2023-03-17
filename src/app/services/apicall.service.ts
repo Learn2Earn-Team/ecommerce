@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { ToastService } from './toast.service';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
@@ -5,6 +6,7 @@ import { GlobalService } from './global.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +19,9 @@ export class ApicallService {
     private authservice: AuthService,
     public global: GlobalService,
     public httpClient: HttpClient,
-    public toast : ToastService
-  ) {}
+    public toast : ToastService,
+    public storage : StorageService,
+    public navCTRL : NavController  ) {}
 
   api_getcategory(): void {
     this.authservice.getdata('getcategory').then(
@@ -112,13 +115,14 @@ export class ApicallService {
     );
   }
 
-  api_createuser(data: any): void {
-    this.authservice.con(data, 'signup').then(
+  async api_createuser(data: any) {
+    await this.authservice.con(data, 'signup').then(
       async (res) => {
         this.response = JSON.parse(String(res).toString());
         console.log(this.response);
 
         if (this.response.error === false) {
+         await this.api_signin(data)
           // this.router.navigate(['login'])
           // Swal.fire({
           //   position: 'top-end',
@@ -127,7 +131,6 @@ export class ApicallService {
           //   showConfirmButton: false,
           //   timer: 2000,
           // });
-            this.toast.presentToast("User is Created Successfully")
         }
       },
       (err) => {
@@ -135,15 +138,27 @@ export class ApicallService {
       }
     );
   }
-  api_signin(data: any) {
-    this.authservice.con(data, 'login').then(
+
+  async api_getSlides() {
+    await this.authservice.getdata('getslides').then( (result) => {
+      let data = JSON.parse(String(result));
+      this.global.set_Slides(data);
+      console.log(data);
+    }, (err) => {
+
+      console.log(err);
+    });
+  }
+ async  api_signin(data: any) {
+   await this.authservice.con(data, 'login').then(
       async (res) => {
         this.response = JSON.parse(String(res).toString());
           console.log(this.response);
 
         if (this.response.error === false) {
           this.global.set_User(this.response);
-           this.router.navigate(['tabs/tab1'])
+           this.storage.set("login" , this.response)
+           this.navCTRL.navigateRoot(['tabs/tab1'])
           // Swal.fire({
           //   position: 'top-end',
           //   icon: 'success',
@@ -154,7 +169,7 @@ export class ApicallService {
           // return 'order is placed';
           this.toast.presentToast("Successfully Logged In")
         }else if(this.response.error === true){
-          this.toast.presentToast(this.response.message + 'Please Signup')
+          this.toast.presentToast(this.response.message + ' Please Signup')
 
         }
       },

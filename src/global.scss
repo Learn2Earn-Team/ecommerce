@@ -80,3 +80,37 @@
   --color: white;
 
 }
+
+
+@font-face {
+  font-family: 'Poppins-L';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/Poppins/Poppins-Light.ttf');
+}
+
+.mySwiper2{
+  margin-top: 20px;
+  height: 250px;
+
+
+  .swiper-pagination-bullet{
+    height: 6px;
+    background: var(--ion-color-primary);
+    width: 5px;
+    margin-left: 4px;
+
+  }
+
+  .swiper-pagination {
+    position: relative;
+
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .mySwiper2{
+    height: 185px;
+  }
+}

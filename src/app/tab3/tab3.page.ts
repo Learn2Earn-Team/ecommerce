@@ -1,8 +1,10 @@
+import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/services/global.service';
 import { ApicallService } from 'src/app/services/apicall.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tab3',
@@ -11,18 +13,20 @@ import { ToastService } from '../services/toast.service';
 })
 export class Tab3Page implements OnInit {
   public profile:any={name:'',email:'',password:'',confirm_password:'',number:'',adress:'' }
-   public UserData : any ;
+   public UserData : any = null ;
 
   constructor(public router: Router,
       public api : ApicallService ,
       public global : GlobalService,
-      public toast : ToastService
+      public toast : ToastService,
+      public storage : StorageService,
+      public navCTRL : NavController
 
     ) {}
 
 
   ngOnInit(){
-      this.verify()
+   this.verify()
   }
   update_profile(){
     console.log(this.UserData)
@@ -46,8 +50,11 @@ export class Tab3Page implements OnInit {
    logout(){
     this.global.set_User('')
     this.toast.presentToast("Successfully Logged Out")
-    this.router.navigate(['tabs/tab1'])
-   }
+    this.storage.delete("login")
+    this.UserData = null
+    this.navCTRL.navigateForward(['tabs/tab1'])
+
+  }
 
    notification(){
     this.router.navigate(['tabs/tab4'])
@@ -76,10 +83,6 @@ export class Tab3Page implements OnInit {
     {
       this.toast.presentToast("Please Login To Continue")
       this.router.navigate(['login']);
-    }
-    else{
-      console.log('logged in');
-
     }
     console.log('test');
 

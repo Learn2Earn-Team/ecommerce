@@ -5,7 +5,7 @@ import { ApicallService } from "./services/apicall.service";
 import { IonSplitPane } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-
+import { StorageService } from './services/storage.service';
 
 
 @Component({
@@ -27,17 +27,33 @@ export class AppComponent implements OnInit, OnDestroy {
 
                      clickMenuItem : any;
                      items: Observable<any[]>;
-                     constructor(firestore: AngularFirestore ,public global :GlobalService , public apicall : ApicallService, public router: Router) {
+                     constructor(public storage : StorageService , firestore: AngularFirestore ,public global :GlobalService , public apicall : ApicallService, public router: Router) {
                       this.items = firestore.collection('items').valueChanges();
                      }
 
   async ngOnInit() {
     this.apicall.api_getcategory();
+    this.apicall.api_getSlides()
     this.global.Category.subscribe(res => {
       this.menu = res;
 
     });
 
+  this.storage.get("login").then(res=>{
+      let data = JSON.parse(String(res))
+       if(data != null){
+        console.log("in")
+           this.global.set_User(data)
+       }
+       console.log(data)
+  })
+
+
+
+  // if(await data){
+  //   console.log(data.)
+  //   this.global.set_User(data)
+  // }
 
 
       // Show the splash for two seconds and then automatically hide it:

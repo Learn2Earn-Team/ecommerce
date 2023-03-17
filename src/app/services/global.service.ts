@@ -16,6 +16,15 @@ export class GlobalService {
   set_product(Product : any){
     this.product.next(Product);
   }
+
+  private Slides = new BehaviorSubject<any>('');
+  public slides = this.Slides.asObservable();
+
+  set_Slides(slides : any){
+    this.Slides.next(slides);
+  }
+
+
   private nextproduct = new BehaviorSubject<any>('');
   public Nextproduct = this.nextproduct.asObservable();
 

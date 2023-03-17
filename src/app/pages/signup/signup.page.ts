@@ -6,6 +6,7 @@ import  firebase  from 'firebase/compat/app'
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
+import { StorageService } from 'src/app/services/storage.service';
 const environment:any = {firebaseConfig : {
  apiKey: "AIzaSyBmxCszTxO9ETX53FLurCtZVmSXz9p_c2c",
  authDomain: "realbeez-66e11.firebaseapp.com",
@@ -39,7 +40,7 @@ export class SignupPage implements OnInit {
   public user: any = {frist_name: null , last_name: null , email: null , mobile_no: null , address: null , cnic: null , city: null, state: null, zip_code: null};
 
   constructor(public router: Router , public apicall: ApicallService , public global: GlobalService,
-    private alert: AlertController,
+    private alert: AlertController, public storage : StorageService,
     private authService:  AuthService,public toast : ToastService , public loading : LoadingController) { }
 
   ngOnInit() {
@@ -103,6 +104,10 @@ async ionViewDidEnter() {
         success => {
           this.loading.dismiss()
           this.OtpVerification();
+        }, (err)=>{
+          console.log(err)
+          this.loading.dismiss()
+          this.toast.presentToast("Error! If Keep Showing Try Restarting App")
         }
       );
     }
@@ -153,8 +158,6 @@ async ionViewDidEnter() {
   postData(){
     console.log(this.user)
     this.global.set_User({error:false , user:this.user})
-    // this.toast.presentToast("User Created Successfully")
-    this.router.navigate(['tabs/tab1'])
     this.apicall.api_createuser(this.user);
   }
 }

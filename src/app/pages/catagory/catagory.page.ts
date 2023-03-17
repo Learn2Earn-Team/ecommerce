@@ -49,7 +49,14 @@ export class CatagoryPage implements OnInit {
    }
 
    prof(){
-    this.router.navigate(['tabs/tab3'])
+    this.global.User.subscribe(res=>{
+      if(res === ''){
+        console.log('ss')
+        this.router.navigate(['login'])
+      }else{
+        this.router.navigate(['tabs/tab3'])
+      }
+    })
    }
 
    search(){
