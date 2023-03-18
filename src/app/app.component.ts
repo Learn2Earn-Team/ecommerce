@@ -37,6 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.apicall.api_getcategory();
     this.apicall.api_getSlides()
     this.global.Category.subscribe(res => {
+      console.log(res)
       this.menu = res;
 
     });
@@ -66,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ionViewDidEnter(){
     this.OneSignalInit();
-  } 
+  }
   goto(value: any) {
     this.router.navigate(['catagory']);
     console.log(value);
