@@ -24,18 +24,21 @@ export class CatagoryPage implements OnInit {
 
 
   ngOnInit() {
-    this.global.Product.subscribe(res => {
-      this.product = res;
-      console.log(this.product);
-    });
-    if (this.product === null){
-      this.apicall.api_getallproducts();
-      this.global.Product.subscribe(res => {
-        this.product = res;
-        console.log(this.product);
-      });
-    }
-
+    // this.global.Product.subscribe(res => {
+    //   this.product = res;
+    //   console.log(this.product);
+    // });
+    // if (this.product === null){
+    //   this.apicall.api_getallproducts();
+    //   this.global.Product.subscribe(res => {
+    //     this.product = res;
+    //     console.log(this.product);
+    //   });
+    // }
+    this.global.Productbucat.subscribe(res=>{
+      this.product = res
+      console.log(res)
+    })
   }
 
   gotodetail(value: any){

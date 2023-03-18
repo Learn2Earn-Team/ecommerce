@@ -47,6 +47,7 @@ constructor(public storage : StorageService, public router: Router , public apic
   login(){
     this.apicall.api_signin(this.user);
     console.log(this.user)
+    this.loading.dismiss()
   }
   next(){
 
@@ -143,9 +144,13 @@ async OtpVerification() {
     buttons: [{
       text: 'Confirm',
       handler: (res) => {
+        this.presentLoading()
         this.authService.enterVerificationCode(res.otp).then(
           async userData => {
             this.login()
+          },(err)=>{
+            this.loading.dismiss()
+            this.toast.presentToast("Please Enter Correct Verfication Code")
           }
         );
       }

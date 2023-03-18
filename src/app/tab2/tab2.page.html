@@ -21,13 +21,13 @@
 
   </ion-card>
 
-  <ion-searchbar [(ngModel)]="FilterTerm" animated="true" ></ion-searchbar>
+  <ion-searchbar [(ngModel)]="FilterTerm" [debounce]="200" (ngModelChange)="filterr()" animated="true" ></ion-searchbar>
 
 
   <ion-row>
 
 
-      <ion-col size-xs="6" size-sm="4" size-md="3" size-lg="2.4" *ngFor="let d of items | filter: FilterTerm">
+      <ion-col size-xs="6" size-sm="4" size-md="3" size-lg="2.4" *ngFor="let d of  items ">
         <ion-card class="c2" (click)="detail(d)">
           <img loading="lazy" src="{{d.image}}" alt="">
 
@@ -47,5 +47,7 @@
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-row>
+
+
 
 </ion-content>

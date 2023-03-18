@@ -1,4 +1,4 @@
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     Tab2PageRoutingModule,
     Ng2SearchPipeModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page],
+  providers : [Ng2SearchPipe]
 })
 export class Tab2PageModule {}

@@ -26,8 +26,21 @@
 
     <ion-card>
       <ion-row>
-      <ion-col size-xs="12" size-md="6">
-    <img alt="Silhouette of mountains" src="{{this.productdetail.image}}" />
+      <ion-col size-xs="12" size-md="6" >
+          <swiper #swiper [config]="Config" (click)="disable()"  class="swiper_product" >
+            <ng-template swiperSlide>
+<div style="height: 61vh;">
+  <img alt="Silhouette of mountains" src="{{productdetail.image}}" />
+
+</div>
+            </ng-template>
+            <ng-template *ngFor="let img of productimages" swiperSlide>
+              <div style="height: 61vh;">
+                <img alt="Silhouette of mountains" src="{{img.image}}" />
+
+              </div>
+                          </ng-template>
+          </swiper>
     </ion-col>
 
 
@@ -58,8 +71,8 @@
       <ion-card-title class="ds">Description</ion-card-title>
       <p>{{this.productdetail.discription}}</p>
       <ion-row class="row_profit">
-        <ion-col size="12" sizeMd="10" class="ion-text-center" >
-          <ion-input type="number" [(ngModel)]="this.productdetail.profit" placeholder="Enter Your Profit" class="inpt"></ion-input>
+        <ion-col style="    padding: 10px 30px;" size="12" sizeMd="10" class="ion-text-center" >
+          <ion-input  type="number" [(ngModel)]="this.productdetail.profit" placeholder="Enter Your Profit" class="inpt"></ion-input>
             <ion-label *ngIf="this.productdetail.profit > max_profit "  color="danger" class="ion-text-center">Max Profit {{max_profit}} Allowed</ion-label>
         </ion-col>
 

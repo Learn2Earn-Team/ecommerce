@@ -38,6 +38,7 @@ export class CartPage implements OnInit {
     this.cart.splice(i, 1);
 
     this.total = 0;
+     this.total_profit = 0
     // for ( this.item of this.cart) {
     //   this.total =  this.total + this.item.price_per_unit;
     // }
@@ -99,6 +100,7 @@ export class CartPage implements OnInit {
       console.log('ali');
       this.order.customer= this.user.user
       this.order.customer.total = this.grandtotal;
+      this.order.customer.total_profit = this.total_profit;
       this.order.cart = this.cart;
       console.log(this.order);
 

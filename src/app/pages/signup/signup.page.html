@@ -63,15 +63,38 @@
 
 
 
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center" style="    margin-top: 25px;font-weight: 600;">Add Payment</ion-col>
+    </ion-row>
+
+    <ion-item lines="none">
+      <ion-item>
+        <ion-select [(ngModel)]="payment.type" interface="popover" placeholder="Select Payment Method">
+          <ion-select-option value="easypaisa">Easypaisa</ion-select-option>
+          <ion-select-option value="jazzcash">JazzCash</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item>
+
+    <ion-item lines="none" style="margin-bottom: 20px;">
+      <ion-label><ion-icon name="trail-sign-outline"></ion-icon> </ion-label>
+      <ion-input type="number"  [(ngModel)]="this.payment.acc_no" placeholder="Enter Wallet Number">
+        <ion-label style="padding: 0px 5px;">+92</ion-label>
+      </ion-input>
+    </ion-item>
+
+
+
     <p class="text">Already Have an Account? <b (click)="back()" >Sign In</b></p>
 
 
 
-    <ion-button class="btn1" [disabled]="this.user.mobile_no === null || this.user.zip_code === null || this.user.city === '' || this.user.state === '' || this.user.address === '' || this.user.cnic === '' || !this.user.email.includes('@gmail.com') || this.user.last_name === '' || this.user.frist_name === '' " (click)="signinWithPhoneNumber()">Request OTP</ion-button>
+    <ion-button class="btn1" [disabled]="this.user.mobile_no === null || this.user.zip_code === null || this.user.city === '' || this.user.state === '' || this.user.address === '' || this.user.cnic === '' || !this.user.email.includes('@gmail.com') || this.user.last_name === '' || this.user.frist_name === '' || payment.acc_no === null || payment.type === '' " (click)="signinWithPhoneNumber()">Request OTP</ion-button>
 
 
   </ion-card>
 
 
 </ion-content>
-<div style="margin-top: 100px;" id="sign-in-button"></div>
+<div id="sign-in-button"></div>

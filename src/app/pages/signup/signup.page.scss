@@ -9,6 +9,10 @@
     margin-top: 1vh;
     display: flex;
 }
+
+ion-select{
+  width: 100%;
+}
 .c1{
 
 
@@ -52,7 +56,7 @@
         margin-bottom: 20px;
     }
 
-    
+
     ion-item{
         width: 96%;
         margin-top: 10px;
@@ -74,9 +78,9 @@
         margin-right: auto;
         display: flex;
         margin-bottom: 30px;
-        
+
     }
-   
+
     .text{
         margin-top: 15px;
         text-align: center;

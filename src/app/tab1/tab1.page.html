@@ -3,7 +3,7 @@
   <ion-card class="nav">
 
 
-    <img src="./../../assets/loga.png" class="logo1" alt="">
+    <img src="./../../assets/ar collection.png" class="logo1" alt="">
     <h5>AR Collections</h5>
 
 
@@ -95,7 +95,7 @@
 
 
     <ion-col size="12" class="swiper_col">
-      <swiper #swiper [config]="Config" class="mySwiper2">
+      <swiper #swiper [config]="Config" [slidesPerView]="slideperview" class="mySwiper2">
         <ng-template *ngFor="let data of slides" swiperSlide>
           <div class="template-2">
             <ion-row>

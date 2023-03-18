@@ -1,23 +1,23 @@
 ion-tabs{
-    background: transparent;
+    background: white;
     box-shadow: none;
 }
 
 ion-tab-bar{
-    --background: var(--ion-color-primary);
+    // --background: #0093E9;
     width: 96%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 100px;
-    margin-bottom: 10px;
-    
+    // margin-bottom: 10px;
+
     ion-icon{
         font-size: 20px;
     }
 
     ion-tab-button{
         --color: #070707;
-        --color-selected: #fff;
+        --color-selected: #0093E9;
         --ripple-color: #fff;
     }
 }

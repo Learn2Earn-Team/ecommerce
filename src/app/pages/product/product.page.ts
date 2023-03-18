@@ -1,17 +1,24 @@
 import { ToastService } from './../../services/toast.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 import { Share } from '@capacitor/share';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, Observable } from 'rxjs';
+import { ShareService } from 'src/app/services/share.service';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y , SwiperOptions , Virtual, EffectCards, Autoplay, EffectFlip, EffectCoverflow } from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
+import { ApicallService } from 'src/app/services/apicall.service';
 
+
+SwiperCore.use([Virtual]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y,EffectFlip,Autoplay,EffectCoverflow]);
 @Component({
   selector: 'app-product',
   templateUrl: './product.page.html',
   styleUrls: ['./product.page.scss'],
 })
-export class ProductPage implements OnInit {
+export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
   total : number = 0 ;
   public item1: any = {c_id : null , discription: null , image: null , name: null ,  price_per_unit: null , quantity: null , sc_id: null, total_quantity: null, color: null , size: null};
   public cart: {}[] = [];
@@ -21,16 +28,50 @@ export class ProductPage implements OnInit {
   public suitData: any;
   public CartData: any;
  public productdetail: any;
+ public productimages : any[] = []
   max_profit: number = 0 ;
   profit : number = 0 ;
   blob : any ;
-  constructor(public router: Router, public global: GlobalService , public toast : ToastService , public http : HttpClient ) {
+  interval : any ;
+  Config: SwiperOptions = {
+    spaceBetween: 10,
+    pagination: true,
+    speed:500
+  }
+  @ViewChild('swiper') swiper!: SwiperComponent;
+
+  constructor(public share:ShareService , public router: Router, public global: GlobalService , public toast : ToastService , public http : HttpClient , public api : ApicallService) {
+
+  }
+  ngAfterViewInit(): void
+  {
+     this.interval = setInterval(() => {
+        this.swiper.swiperRef.slideNext(500);
+      }, 3000);
 
   }
 
+  disable(){
+    console.log(this.interval)
+    clearInterval(this.interval)
+  }
  async ngOnInit() {
      this.productdetail =  history.state.data;
    this.max_profit = 2000
+
+
+
+   this.api.api_getBase64(this.productdetail.sc_id)
+   await this.api.api_getImages(this.productdetail.sc_id)
+
+   this.global.productImages.subscribe(res=>{
+    this.productimages = res
+    console.log(res)
+   })
+  }
+
+  ngOnDestroy(): void {
+    this.disable()
   }
 
  async addcart(item: any){
@@ -82,49 +123,23 @@ export class ProductPage implements OnInit {
     this.router.navigate(['tabs/tab2'])
    }
 
-   Share(){
+
+
+   async Share(){
+    let base64 ;
+    this.global.base64.subscribe(res=>{
+      base64 =  res[0].image
+      console.log(base64)
+    })
     if(this.productdetail.profit){
-      this.total = this.productdetail.price_per_unit + this.productdetail.profit
+      this.total = this.productdetail.profit + this.productdetail.price_per_unit
     }else{
       this.total = this.productdetail.price_per_unit
     }
-    return Share.share({
-      title: this.productdetail.name ,
-      text: "Checkout This Product: " + this.productdetail.name + " Price:  " + this.total + " PKR " ,
-      url: this.productdetail.image,
-    });
-
-  //   this.http.get(this.productdetail.image, { responseType: 'blob' })
-  //     .pipe(
-  //       switchMap(blob => this.convertBlobToBase64(blob))
-  //     )
-  //     .subscribe(base64ImageUrl => console.log(base64ImageUrl));
-  // }
-
-  // convertBlobToBase64(blob: Blob) {
-  //   return Observable.create((observer:any) => {
-  //     const reader = new FileReader();
-  //     const binaryString = reader.readAsDataURL(blob);
-  //     reader.onload = (event: any) => {
-  //       console.log('Image in Base64: ', event.target.result);
-  //       observer.next(event.target.result);
-  //       observer.complete();
-  //     };
-
-  //     reader.onerror = (event: any) => {
-  //       console.log("File could not be read: " + event.target.error.code);
-  //       observer.next(event.target.error.code);
-  //       observer.complete();
-  //     };
-  //   });
-  }
-
+    console.log(this.productdetail)
+    this.share.file_share(this.productdetail.name , this.productdetail.discription ,this.total, base64)
    }
 
 
-  //  share(){
 
-  //  }
-
-
-
+  }

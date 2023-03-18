@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from "./../services/global.service";
 import { ApicallService } from "./../services/apicall.service";
 import { OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y , SwiperOptions , Virtual } from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
 
 
 SwiperCore.use([Virtual]);
@@ -15,7 +16,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements AfterViewInit,OnDestroy {
   items : any[] = []
   public interval : any ;
   public categroy: any ;
@@ -23,6 +24,10 @@ export class Tab1Page {
   public latest: any ;
  public carti: any;
  public slides : any[] = []
+ slideperview:any = 1 ;
+ intervall : any ;
+ @ViewChild('swiper') swiper!: SwiperComponent;
+
   // tslint:disable-next-line:max-line-length
   public item1: any = {c_id : null , discription: null , image: null , name: null ,  price_per_unit: null , quantity: null , sc_id: null, total_quantity: null, color: null , size: null};
   public user: any;
@@ -30,6 +35,7 @@ export class Tab1Page {
 
   public product:any =[{p_id:"", name:"", price:"", brand: "", description:"", img:""}]
   public AllProducts : any[] = []
+
   cart(){
     this.router.navigate(['cart'])
    }
@@ -49,12 +55,23 @@ export class Tab1Page {
     slidesPerView: 1.05,
     pagination: true
   }
+  doCheck() {
+    const query = window.matchMedia("(max-width: 600px)")
+    if (query.matches) { // If media query matches
+       this.slideperview = 1
+    } else {
+      this.slideperview = 1.6
+
+    }
+  }
+
 
    search(){
     this.router.navigate(['tabs/tab2'])
    }
 
    ngOnInit() {
+    this.doCheck()
     this.global.slides.subscribe(res=>{
       this.slides = res
       console.log(res)
@@ -90,6 +107,22 @@ export class Tab1Page {
 
   }
 
+  ngAfterViewInit(): void
+  {
+     this.intervall = setInterval(() => {
+        this.swiper.swiperRef.slideNext(500);
+      }, 3000);
+
+  }
+
+  disable(){
+    console.log(this.interval)
+    clearInterval(this.interval)
+  }
+  ngOnDestroy(): void {
+    this.disable()
+    clearInterval(this.interval)
+  }
   async getproducts(){
     await this.apicall.api_getallproducts()
     this.global.Product.subscribe(res=>{
@@ -103,13 +136,6 @@ export class Tab1Page {
     this.apicall.api_productbycategory(value.c_id);
   }
 
-
-
-
-  public data: any =[{name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
-  {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"},
-  {name:"Men Premium Shalwar Kameez Off White", price:"2200", img:"./../../assets/MenPremiumShalwarKameezOff-White_3_400x.jpg.webp"},
-  {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
   slideOptsOne = {
     initialSlide: 0,
@@ -161,8 +187,6 @@ export class Tab1Page {
     this.router.navigate(['catagory'])
    }
 
-
-public categ: any =[{name: "Men"},{name: "Women"},{name: "Clothing"},{name: "Summer"},{name: "Winter"}]
 
 slideOptsOnee = {
   initialSlide: 0,

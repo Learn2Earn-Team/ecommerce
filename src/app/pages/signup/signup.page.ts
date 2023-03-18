@@ -29,6 +29,7 @@ CountryJson: [
 })
 export class SignupPage implements OnInit {
   CountryJson = environment.CountryJson;
+  payment : any = {u_id : null , type : '' , acc_no: null}
   OTP: string = '';
   Code: any;
   PhoneNo: any;
@@ -142,10 +143,14 @@ async ionViewDidEnter() {
       buttons: [{
         text: 'Confirm',
         handler: (res) => {
+          this.presentLoading()
           this.authService.enterVerificationCode(res.otp).then(
             async userData => {
               this.showSuccess();
               this.postData()
+            },(err)=>{
+              this.loading.dismiss()
+            this.toast.presentToast("Please Enter Correct Verfication Code")
             }
           );
         }
@@ -159,5 +164,7 @@ async ionViewDidEnter() {
     console.log(this.user)
     this.global.set_User({error:false , user:this.user})
     this.apicall.api_createuser(this.user);
+    this.global.set_Payment(this.payment)
+    this.loading.dismiss()
   }
 }

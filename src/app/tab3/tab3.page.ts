@@ -12,9 +12,13 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
+
+  payment : any = {u_id : null , type : '' , acc_no: null}
   public profile:any={name:'',email:'',password:'',confirm_password:'',number:'',adress:'' }
    public UserData : any = null ;
-
+   isModalOpen = false;
+   isModalOpen1 = false;
+    OrderCounts : any ;
   constructor(public router: Router,
       public api : ApicallService ,
       public global : GlobalService,
@@ -27,10 +31,32 @@ export class Tab3Page implements OnInit {
 
   ngOnInit(){
    this.verify()
+   this.api.api_getPayment(this.UserData.u_id)
+   this.global.payment.subscribe(res=>{
+     this.payment = res[0]
+     console.log(this.payment)
+   })
+
+   this.api.api_getCountOrders(this.UserData.u_id)
+   this.global.ordercounts.subscribe(res=>{
+          this.OrderCounts = res
+          console.log(res)
+   })
+  }
+
+ async  updatePayment(){
+  this.isModalOpen1 = false
+    this.payment.u_id = this.UserData.u_id
+    console.log(this.payment)
+    await this.api.api_UpdatePayment(this.payment)
+setTimeout(() => {
+  this.api.api_getPayment(this.UserData.u_id)
+}, 500);
   }
   update_profile(){
     console.log(this.UserData)
     this.api.api_UpdateUser(this.UserData)
+    this.storage.update("login" , {error:false , user:this.UserData})
     this.isModalOpen = false
     this.toast.presentToast("Profile Updated Successfully")
     //  this.api.
@@ -66,10 +92,13 @@ export class Tab3Page implements OnInit {
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
 
-  isModalOpen = false;
+
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+  setOpen1(isOpen: boolean) {
+    this.isModalOpen1 = isOpen;
   }
 
   verify(){
@@ -82,7 +111,7 @@ export class Tab3Page implements OnInit {
     if(data === '')
     {
       this.toast.presentToast("Please Login To Continue")
-      this.router.navigate(['login']);
+      this.navCTRL.navigateRoot(['login']);
     }
     console.log('test');
 

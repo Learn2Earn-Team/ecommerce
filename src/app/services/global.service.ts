@@ -17,6 +17,20 @@ export class GlobalService {
     this.product.next(Product);
   }
 
+  private productbucat = new BehaviorSubject<any>('');
+  public Productbucat = this.productbucat.asObservable();
+
+  set_productbucat(productbucat : any){
+    this.productbucat.next(productbucat);
+  }
+
+  private Payment = new BehaviorSubject<any>('');
+  public payment = this.Payment.asObservable();
+
+  set_Payment(Payment : any){
+    this.Payment.next(Payment);
+  }
+
   private Slides = new BehaviorSubject<any>('');
   public slides = this.Slides.asObservable();
 
@@ -78,6 +92,29 @@ export class GlobalService {
   set_Userorder(userorder: any): void {
     this.userorder.next(userorder);
   }
+
+  private Base64 = new BehaviorSubject<any>('');
+  public base64 = this.Base64.asObservable();
+
+  set_Base64(Base64: any): void {
+    this.Base64.next(Base64);
+  }
+
+
+  private OrderCounts = new BehaviorSubject<any>('');
+  public ordercounts = this.OrderCounts.asObservable();
+
+  set_ordercounts(OrderCounts: any): void {
+    this.OrderCounts.next(OrderCounts);
+  }
+
+  private ProductImages = new BehaviorSubject<any>('');
+  public productImages = this.ProductImages.asObservable();
+
+  set_ProductImages(productImages: any): void {
+    this.ProductImages.next(productImages);
+  }
+
   private orderdetail = new BehaviorSubject<any>('');
   public Orderdetail = this.orderdetail.asObservable();
 

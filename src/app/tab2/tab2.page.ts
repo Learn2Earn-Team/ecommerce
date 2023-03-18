@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApicallService } from '../services/apicall.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { Ng2SearchPipe } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-tab2',
@@ -17,11 +18,13 @@ export class Tab2Page implements OnInit {
   {name:"Men Premium Shalwar Kameez Off White", price:"5200", img:"./../../assets/c9d98d2cae95ded97d6b10a303652169.jpg"}]
 
   products : any[] = []
+  backup : any[] = []
   items : any[] = []
   public interval : any ;
   constructor(public router: Router,
     public api : ApicallService,
-    public global : GlobalService
+    public global : GlobalService,
+    public filter : Ng2SearchPipe
     ) {}
 
  async ngOnInit() {
@@ -36,8 +39,21 @@ export class Tab2Page implements OnInit {
   await this.api.api_getallproducts()
   this.global.Product.subscribe(res=>{
       this.products = res
+      this.backup = res
       console.log(res)
   })
+}
+
+filterr(){
+     if(this.FilterTerm == ''){
+          this.products = this.backup
+          this.items = []
+          this.generateItems()
+     }else{
+      this.products  = this.filter.transform(this.products , this.FilterTerm)
+     this.items = []
+     this.generateItems()
+     }
 }
 
 detail(d: any){

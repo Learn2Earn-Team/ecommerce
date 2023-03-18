@@ -13,6 +13,7 @@ import { StorageService } from './storage.service';
 })
 export class ApicallService {
   response: any;
+  is_payment : boolean =  false
   data: any;
   constructor(
     private router: Router,
@@ -36,11 +37,13 @@ export class ApicallService {
     );
   }
 
+
+
   api_productbycategory(id: any) {
     this.authservice.getdata('getproductsbycategory/' + id).then(
       (result) => {
         this.data = JSON.parse(String(result));
-        this.global.set_product(this.data);
+        this.global.set_productbucat(this.data);
         // this.router.navigate(['customerdetail']);
       },
       (err) => {
@@ -48,6 +51,21 @@ export class ApicallService {
       }
     );
   }
+
+  api_getPayment(u_id: any) {
+    this.authservice.getdata('getpayment/' + u_id).then(
+      (result) => {
+        this.data = JSON.parse(String(result));
+        console.log(this.data)
+        this.global.set_Payment(this.data);
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   api_getallproducts(): void {
     this.authservice.getdata('getallproducts').then(
       (result) => {
@@ -115,6 +133,32 @@ export class ApicallService {
     );
   }
 
+  api_InsertPayment(data: any) {
+    this.authservice.con(data, 'insertpayment').then(
+      (res) => {
+        this.response = JSON.parse(String(res).toString());
+        console.log(this.response)
+      },
+      (err) => {
+        console.log(err)
+
+      }
+    );
+  }
+
+  api_UpdatePayment(data: any) {
+    this.authservice.con(data, 'updatepayment').then(
+      (res) => {
+        this.response = JSON.parse(String(res).toString());
+        console.log(this.response)
+      },
+      (err) => {
+        console.log(err)
+
+      }
+    );
+  }
+
   async api_createuser(data: any) {
     await this.authservice.con(data, 'signup').then(
       async (res) => {
@@ -122,6 +166,7 @@ export class ApicallService {
         console.log(this.response);
 
         if (this.response.error === false) {
+         this.is_payment = true
          await this.api_signin(data)
           // this.router.navigate(['login'])
           // Swal.fire({
@@ -157,6 +202,22 @@ export class ApicallService {
 
         if (this.response.error === false) {
           this.global.set_User(this.response);
+          let data : any ;
+          this.global.payment.subscribe((res :any)=>{
+               data = res
+          })
+          if(this.is_payment){
+            console.log(this.response.user.u_id)
+            data.u_id= this.response.user.u_id
+            console.log(res)
+            setTimeout(() => {
+              console.log(data)
+              this.api_InsertPayment(data)
+            }, 1000);
+          }else{
+            console.log('else')
+            this.api_getPayment(this.response.user.u_id)
+          }
            this.storage.set("login" , this.response)
            this.navCTRL.navigateRoot(['tabs/tab1'])
           // Swal.fire({
@@ -199,6 +260,49 @@ export class ApicallService {
       }
     );
   }
+
+  api_getBase64(sc_id: any) {
+    this.authservice.getdata('get_base64/' + sc_id).then(
+      (result) => {
+        this.data = JSON.parse(String(result));
+        console.log(this.data)
+        this.global.set_Base64(this.data);
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  api_getCountOrders(u_id: any) {
+    this.authservice.getdata('getCountOrder/' + u_id).then(
+      (result) => {
+        this.data = JSON.parse(String(result));
+        console.log(this.data)
+        this.global.set_ordercounts(this.data);
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+async  api_getImages(sc_id: any) {
+   await this.authservice.getdata('productImages/' + sc_id).then(
+      (result) => {
+        this.data = JSON.parse(String(result));
+        console.log(this.data)
+        this.global.set_ProductImages(this.data);
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   api_getorderdetail(id: any) {
     this.authservice.getdata('getorderdetail/' + id).then(
       (result) => {
