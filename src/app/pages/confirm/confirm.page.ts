@@ -1,3 +1,4 @@
+import { OneSignalService } from './../../services/onesignal.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
@@ -21,7 +22,7 @@ export class ConfirmPage implements OnInit {
 
 public send: boolean = false;
   public order: any;
-  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService , public toast : ToastService) { }
+  constructor(public router: Router , public apicall: ApicallService , public global: GlobalService , public toast : ToastService, private oneSignal: OneSignalService) { }
 
   ngOnInit() {
     this.global.Cart.subscribe(res => {
@@ -43,5 +44,7 @@ public send: boolean = false;
 
 
   }
-
+  sendNotification() {
+    this.oneSignal.sendNotification('New Order Placed','A New Order Placed Click to View');
+  }
 }

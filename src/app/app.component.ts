@@ -6,6 +6,7 @@ import { IonSplitPane } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { StorageService } from './services/storage.service';
+import OneSignal from 'onesignal-cordova-plugin';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
                      }
 
   async ngOnInit() {
+    this.OneSignalInit();
     this.apicall.api_getcategory();
     this.apicall.api_getSlides()
     this.global.Category.subscribe(res => {
@@ -62,7 +64,9 @@ export class AppComponent implements OnInit, OnDestroy {
   //   autoHide: true,
   // });
   }
-
+  ionViewDidEnter(){
+    this.OneSignalInit();
+  } 
   goto(value: any) {
     this.router.navigate(['catagory']);
     console.log(value);
@@ -88,5 +92,12 @@ export class AppComponent implements OnInit, OnDestroy {
     // else{
     //   this.route.navigate([item]);
     // }
+}
+ // One SIgnal
+ OneSignalInit() {
+  OneSignal.setAppId('5276cbab-c3b9-4b19-860f-0521a83460ef');
+  OneSignal.setNotificationOpenedHandler(function(jsonData) {
+    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  });
 }
 }

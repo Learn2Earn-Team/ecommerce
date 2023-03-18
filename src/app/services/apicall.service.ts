@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { StorageService } from './storage.service';
+import { OneSignalService } from './onesignal.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class ApicallService {
     public httpClient: HttpClient,
     public toast : ToastService,
     public storage : StorageService,
+    private oneSignal: OneSignalService,
     public navCTRL : NavController  ) {}
 
   api_getcategory(): void {
@@ -107,7 +109,8 @@ export class ApicallService {
       (res) => {
         this.response = JSON.parse(String(res).toString());
         if (this.response.error === false) {
-          this.toast.presentToast("Order placed Successfully")
+          this.toast.presentToast("Order placed Successfully");
+          this.oneSignal.sendNotification('New Order Placed','A New Order Placed Click to View');
           console.log(this.response);
           this.router.navigate(['order'])
         }
