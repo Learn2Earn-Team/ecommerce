@@ -39,6 +39,7 @@ export class GlobalService {
   }
 
 
+
   private nextproduct = new BehaviorSubject<any>('');
   public Nextproduct = this.nextproduct.asObservable();
 

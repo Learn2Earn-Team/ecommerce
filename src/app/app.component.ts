@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
                      }
 
   async ngOnInit() {
-    this.OneSignalInit();
+    // this.OneSignalInit();
     this.apicall.api_getcategory();
     this.apicall.api_getSlides()
     this.global.Category.subscribe(res => {

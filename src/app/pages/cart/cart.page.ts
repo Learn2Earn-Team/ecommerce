@@ -70,10 +70,13 @@ export class CartPage implements OnInit {
 
   }
   async plus(i: any) {
+       if(this.cart[i].total_quantity>this.cart[i].quantity){
+        this.cart[i].quantity++;
+       await this.totalsum();
+       }else{
+        this.toast.presentToast("Only " + this.cart[i].total_quantity + " Item Left in Stock")
+       }
 
-      this.cart[i].quantity++;
-     // this.total = this.total + this.cart[i].price_per_unit;
-    await this.totalsum();
 
   }
  async minus(i: any) {

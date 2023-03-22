@@ -68,6 +68,9 @@ export class ApicallService {
     );
   }
 
+
+
+
   api_getallproducts(): void {
     this.authservice.getdata('getallproducts').then(
       (result) => {

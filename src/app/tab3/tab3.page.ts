@@ -5,6 +5,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../services/toast.service';
 import { StorageService } from '../services/storage.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-tab3',
@@ -118,4 +119,11 @@ setTimeout(() => {
 
   }
 
+
+  open(link :any){
+    Browser.open({
+      windowName:"AR Collection Links",
+      url : link
+    })
+  }
 }

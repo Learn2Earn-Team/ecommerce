@@ -131,13 +131,18 @@ export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
       base64 =  res[0].image
       console.log(base64)
     })
-    if(this.productdetail.profit){
-      this.total = this.productdetail.profit + this.productdetail.price_per_unit
+    if(base64){
+      if(this.productdetail.profit){
+        this.total = this.productdetail.profit + this.productdetail.price_per_unit
+      }else{
+        this.total = this.productdetail.price_per_unit
+      }
+      console.log(this.productdetail)
+      this.share.file_share(this.productdetail.name , this.productdetail.discription ,this.total, base64)
     }else{
-      this.total = this.productdetail.price_per_unit
+      this.toast.presentToast("Slow Internet Connect Try Again")
     }
-    console.log(this.productdetail)
-    this.share.file_share(this.productdetail.name , this.productdetail.discription ,this.total, base64)
+
    }
 
 

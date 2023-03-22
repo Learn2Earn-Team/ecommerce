@@ -23,7 +23,7 @@ ion-split-pane {
     margin-top: 10px;
     background: transparent;
     text-align: left;
-    
+
     ion-item{
         font-size: 10px;
         --background: transparent;
@@ -31,7 +31,7 @@ ion-split-pane {
         margin-left: 0;
         --padding-start: 0;
         text-align: left;
-
+        cursor: default;
         img{
             height: 40px;
             width: 40px;

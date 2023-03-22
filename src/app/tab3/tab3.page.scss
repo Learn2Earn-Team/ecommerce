@@ -22,12 +22,12 @@ ion-select{
 .c1{
     width: 100%;
     margin: 0;
-    height: 44vh;
+    height: 49vh;
     background: #fff;
     box-shadow: none;
     text-align: center;
     .t1{
-        margin-top: 20px;
+        margin: 10px 0px;
         font-size: 18px;
         letter-spacing: 1px;
         font-weight: 600;
@@ -145,6 +145,23 @@ ion-modal{
 
   @media only screen and (max-width: 600px) {
     .c1{
-      height: 41vh;
+      height: 43vh;
     }
   }
+
+  .flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon{
+      margin-top: 4px;
+      color: var(--ion-color-primary);
+      font-size: 20px;
+      margin-left: 8px;
+    }
+  }
+  .not_btn{
+    height: 35px; font-size: 14px; margin: 0px;
+  }
+

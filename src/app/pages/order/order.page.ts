@@ -13,6 +13,8 @@ export class OrderPage implements OnInit {
 
 public user: any;
 public userorder: any;
+public completed: any;
+
   constructor(public router: Router , public apicall: ApicallService , public global: GlobalService) { }
 
 //   data:any =[{id: 3244, name:"Rehan Rana", date:"Mar 08 2023", total: "32000", address: "hkdjhak sjhdjh abdas", mobile: "0303018283", status:"Processing"},
@@ -56,6 +58,7 @@ data : any ;
       this.userorder = res;
       this.userorder = res.filter(val => val.status == 'pending')
       this.data = res.filter(val => val.status == 'confrm')
+      this.completed = res.filter(val => val.status == 'completed')
       console.log(this.userorder);
       console.log(this.data);
     });
