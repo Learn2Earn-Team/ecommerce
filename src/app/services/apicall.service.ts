@@ -41,8 +41,8 @@ export class ApicallService {
 
 
 
-  api_productbycategory(id: any) {
-    this.authservice.getdata('getproductsbycategory/' + id).then(
+  async api_productbycategory(id: any) {
+   await this.authservice.getdata('getproductsbycategory/' + id).then(
       (result) => {
         this.data = JSON.parse(String(result));
         this.global.set_productbucat(this.data);

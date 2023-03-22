@@ -68,10 +68,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ionViewDidEnter(){
     this.OneSignalInit();
   }
-  goto(value: any) {
+  async goto(value: any) {
     this.router.navigate(['catagory']);
     console.log(value);
-    this.apicall.api_productbycategory(value.c_id);
+   await this.apicall.api_productbycategory(value.c_id);
   }
   async ngOnDestroy() {
         // Show the splash for two seconds and then automatically hide it:
