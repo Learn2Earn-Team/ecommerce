@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-const apiUrl = 'https://Learn2earnn.com/ecommerece/public/';
+const apiUrl = 'https://Learn2earnn.com/armart/public/';
 // const apiUrl = 'http://localhost/ecommerece/public/';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat';
