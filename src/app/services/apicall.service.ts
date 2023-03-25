@@ -322,5 +322,22 @@ async  api_getImages(sc_id: any) {
     );
   }
 
+  api_CancelOrder(o_id: any) {
+    this.authservice.getdata('CancelOrder/' + o_id).then(
+      (result) => {
+        let data = JSON.parse(String(result));
+            console.log(data)
+            if(data){
+              this.toast.presentToast("Order is Cancelled Successfully")
+              history.back()
+            }
+        // this.router.navigate(['customerdetail']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   //category
 }

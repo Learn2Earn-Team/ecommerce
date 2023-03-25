@@ -28,6 +28,10 @@
     <ion-card class="main">
       <h3>Order #{{item.o_id}}</h3>
       <p>Placed on 10 Mar 2023</p>
+      <p>Status :{{stateData.status}} </p>
+      <div *ngIf="stateData.status === 'pending'" style="padding: 8px;"><ion-button color="danger" size="small" (click)="cancelOrder()" expand="content" >
+        Cancel Order
+      </ion-button></div>
       <ion-card class="order">
         <ion-row>
           <ion-col size-xs="8.5" size-md="10">

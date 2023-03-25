@@ -37,9 +37,9 @@ data : any ;
     this.router.navigate(['tabs/tab2'])
    }
 
-   next(o_id: any){
-    this.apicall.api_getorderdetail(o_id)
-    this.router.navigate(['order-detail'])
+   next(data: any){
+    this.apicall.api_getorderdetail(data.o_id)
+    this.router.navigate(['order-detail'],{state:{data:data}})
    }
 
 

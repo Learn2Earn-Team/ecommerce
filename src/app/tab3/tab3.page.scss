@@ -164,4 +164,15 @@ ion-modal{
   .not_btn{
     height: 35px; font-size: 14px; margin: 0px;
   }
-
+.div_icon{
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  margin-left:4px;
+  font-size: 13px;
+  ion-icon{
+    margin: 0px 4px;
+    font-size: 13px;
+  }
+}

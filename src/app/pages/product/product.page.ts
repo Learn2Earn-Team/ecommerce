@@ -62,7 +62,7 @@ export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
 
 
    this.api.api_getBase64(this.productdetail.sc_id)
-   await this.api.api_getImages(this.productdetail.sc_id)
+    this.api.api_getImages(this.productdetail.sc_id)
 
    this.global.productImages.subscribe(res=>{
     this.productimages = res
@@ -126,19 +126,19 @@ export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
 
 
    async Share(){
-    let base64 ;
+    let base64Array : any[]= [] ;
     this.global.base64.subscribe(res=>{
-      base64 =  res[0].image
-      console.log(base64)
+      base64Array =  res
+      console.log(base64Array)
     })
-    if(base64){
+    if(base64Array.length >= 1){
       if(this.productdetail.profit){
         this.total = this.productdetail.profit + this.productdetail.price_per_unit
       }else{
         this.total = this.productdetail.price_per_unit
       }
       console.log(this.productdetail)
-      this.share.file_share(this.productdetail.name , this.productdetail.discription ,this.total, base64)
+      this.share.file_share(this.productdetail.name , this.productdetail.discription ,this.total, base64Array)
     }else{
       this.toast.presentToast("Slow Internet Connect Try Again")
     }
