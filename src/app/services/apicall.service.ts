@@ -309,6 +309,34 @@ async  api_getImages(sc_id: any) {
     );
   }
 
+  async  api_getColors(sc_id: any) {
+    await this.authservice.getdata('productColors/' + sc_id).then(
+       (result) => {
+         let data = JSON.parse(String(result));
+         console.log(data)
+         this.global.set_ProductColors(data);
+         // this.router.navigate(['customerdetail']);
+       },
+       (err) => {
+         console.log(err);
+       }
+     );
+   }
+
+   async  api_getSizes(sc_id: any) {
+    await this.authservice.getdata('productSizes/' + sc_id).then(
+       (result) => {
+         let data = JSON.parse(String(result));
+         console.log(data)
+         this.global.set_ProductSizes(data);
+         // this.router.navigate(['customerdetail']);
+       },
+       (err) => {
+         console.log(err);
+       }
+     );
+   }
+
   api_getorderdetail(id: any) {
     this.authservice.getdata('getorderdetail/' + id).then(
       (result) => {

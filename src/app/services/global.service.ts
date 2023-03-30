@@ -116,6 +116,20 @@ export class GlobalService {
     this.ProductImages.next(productImages);
   }
 
+  private ProductSizes = new BehaviorSubject<any>('');
+  public productSizes = this.ProductSizes.asObservable();
+
+  set_ProductSizes(ProductSizes: any): void {
+    this.ProductSizes.next(ProductSizes);
+  }
+
+  private ProductColors = new BehaviorSubject<any>('');
+  public productColors = this.ProductColors.asObservable();
+
+  set_ProductColors(ProductSizes: any): void {
+    this.ProductColors.next(ProductSizes);
+  }
+
   private orderdetail = new BehaviorSubject<any>('');
   public Orderdetail = this.orderdetail.asObservable();
 

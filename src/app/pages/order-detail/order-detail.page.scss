@@ -14,7 +14,7 @@ ion-content{
     background: #fff;
     margin: 0;
     padding-top: 10px;
-    
+
     .logo1{
         height: 60px;
         width: 60px;
@@ -22,7 +22,7 @@ ion-content{
         float: left;
         margin: 0;
     }
-  
+
     h5{
         float: left;
         margin-top: 20px;
@@ -32,16 +32,16 @@ ion-content{
         font-size: 16px;
         margin-left: 0;
     }
-  
+
     ion-menu-toggle{
         float: right;
         margin: 0;
         width: 35px;
         padding: 0;
     }
-  
+
     .icn{
-  
+
         font-size: 20px;
         float: right;
         margin: 10px;
@@ -49,10 +49,10 @@ ion-content{
         border-radius: 50px;
         color: #070707;
     }
-  
-  
+
+
     .nicn{
-  
+
         font-size: 20px;
         float: right;
         margin: 10px;
@@ -61,11 +61,11 @@ ion-content{
         border-radius: 50px;
         color: #070707;
     }
-  
-  
-  
+
+
+
     .icn1{
-  
+
         font-size: 20px;
         float: left;
         margin: 0px;
@@ -74,36 +74,36 @@ ion-content{
         border-radius: 30px;
         color: #070707;
     }
-  
+
     .bkbtn{
         float: left;
         margin: 0;
         margin-top: 6px;
     }
-  
+
   }
-  
-  
+
+
   @media only screen and (max-width: 600px) {
-  
- 
+
+
 
     .nicn{
         display: none;
     }
-  
-  
+
+
     .nav{
-  
+
     .logo1{
         display: none;
     }
-  
+
     // h5{
     //     display: none   ;
     // }
     }
-  
+
   }
 
 
@@ -113,14 +113,14 @@ ion-content{
     width: 100%;
     max-width: 500px;
   }
-  
+
   .c1{
     box-shadow: none;
     background: transparent;
   }
 
   .main{
-     
+
     h3{
         font-size: 14px;
         margin-bottom: 0;
@@ -133,12 +133,12 @@ ion-content{
         margin-bottom: 0;
         margin-left: 3%;
     }
-  
+
 
   .order{
     box-shadow: none;
-  
-  
+
+
 .img{
     img{
         height: 100px;
@@ -150,7 +150,7 @@ ion-content{
         border-radius: 10px;
     }
 }
- 
+
   h4{
     font-size: 15px;
     font-weight: 400;
@@ -187,7 +187,7 @@ h2{
 
 
   @media only screen and (max-width: 600px) {
-  
+
 
     .c1{
       width: 100%;
@@ -211,4 +211,24 @@ h2{
         width: 100;
         margin-left: 10px;
     }
+}
+.color{
+  height: 15px;
+  width: 30px;
+  margin-left: 5px;
+}
+h4{
+  margin: 0px !important;
+  margin-top: 5px;
+}
+
+.rrow{
+  h5{
+    margin: 0px !important;
+    margin-top: 5px;
+  }
+}
+.color_div{
+  display: flex;
+  align-items: center;
 }

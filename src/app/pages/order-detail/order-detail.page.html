@@ -33,9 +33,13 @@
         Cancel Order
       </ion-button></div>
       <ion-card class="order">
-        <ion-row>
+        <ion-row class="rrow">
           <ion-col size-xs="8.5" size-md="10">
-            <h4>Product name {{item.product_name}}</h4>
+            <h4>Product name : {{item.product_name}}</h4>
+            <h4>Size : {{item.size_name}}</h4>
+            <h4 *ngIf="item.color === 'none'">Color : none</h4>
+            <div *ngIf="item.color !== 'none'" class="color_div"><h4>Color : </h4><div [style.background]="item.color" class="color"></div></div>
+
             <h5>Rs {{item.price}} PKR</h5>
             <h5>Profit {{item.profit}} PKR</h5>
             <h5>Delivery 110 PKR</h5>

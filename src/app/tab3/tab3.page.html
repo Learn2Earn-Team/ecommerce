@@ -8,14 +8,48 @@
       <ion-back-button defaultHref="tabs/tab1" mode="md"></ion-back-button>
       <ion-title>Profile</ion-title>
     </ion-card>
-      <div class="circle2">
+
+    <ion-card mode="ios" *ngIf="UserData" class="cardd">
+      <ion-card-header>
+      <ion-card-subtitle   class="t1">{{UserData.frist_name + ' ' + UserData.last_name}}</ion-card-subtitle>
+        <ion-card-title *ngIf="OrderCounts.total_sale=== null">Rs : 0</ion-card-title>
+        <ion-card-title *ngIf="OrderCounts.total_sale !== null">Rs :{{OrderCounts.total_sale}}</ion-card-title>
+         <ion-label>Total Sale</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row >
+          <ion-col size="12" style="border-bottom: 1px solid white;">
+            <ion-row>
+              <ion-col *ngIf="OrderCounts.total_profit !== null" size="12"> Total Profit Rs :{{OrderCounts.total_profit}}</ion-col>
+              <ion-col *ngIf="OrderCounts.total_profit=== null" size="12">Total Profit Rs: 0</ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="4">
+            <ion-row>
+              <ion-col size="12">{{OrderCounts.completed}}</ion-col>
+              <ion-col size="12">Completed</ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="4">
+            <ion-row>
+              <ion-col size="12">{{OrderCounts.confirmed}}</ion-col>
+              <ion-col size="12">Confirmed</ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="4">
+            <ion-row>
+              <ion-col size="12">{{OrderCounts.pending}}</ion-col>
+              <ion-col size="12">Pending</ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+      <!-- <div class="circle2">
         <img src="../../assets/ar collection.png" class="img">
       </div>
-
-
-
-    <ion-card-title *ngIf="UserData"  class="t1">{{UserData.frist_name + ' ' + UserData.last_name}}</ion-card-title>
-    <ion-row *ngIf="UserData">
+    <ion-card-title *ngIf="UserData"  class="t1">{{UserData.frist_name + ' ' + UserData.last_name}}</ion-card-title> -->
+    <!-- <ion-row *ngIf="UserData">
       <ion-col style="padding: 0px;" size="12" class="flex"> <ion-button  class="not_btn" fill="outline" expand="content" >
         Total Sale : {{OrderCounts.total_sale}} | Total Profit : {{OrderCounts.total_profit}}
       </ion-button></ion-col>
@@ -24,7 +58,7 @@
       <ion-col size="12" class="flex"> <ion-button  class="not_btn" (click)="order()" fill="outline" expand="content" >
         Pending: {{OrderCounts.pending}} | Confirmed : {{OrderCounts.confirmed}} | Completed : {{OrderCounts.completed}}
       </ion-button></ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row *ngIf="!UserData">
       <ion-col size="12" style="display: flex; justify-content: center;"> <ion-button (click)="verify()" expand="block" >
         Login To Continue
@@ -37,7 +71,7 @@
     <ion-row>
 
       <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full" (click)="setOpen(true)">
+    <ion-item lines="none" (click)="setOpen(true)">
       <ion-icon name="person-outline" slot="start"></ion-icon>
       <ion-label>Edit Personal Info
         <p>Name, Phone, Email, Address</p>
@@ -47,7 +81,7 @@
 </ion-col>
 
 <ion-col size-xs="12" size-md="6">
-  <ion-item lines="full" (click)="setOpen1(true)">
+  <ion-item lines="none" (click)="setOpen1(true)">
     <ion-icon name="card-outline" slot="start"></ion-icon>
     <ion-label>Update Payments
       <p>Payment No , Payment Method</p>
@@ -59,7 +93,7 @@
 
 
     <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full" (click)="order()">
+    <ion-item lines="none" (click)="order()">
       <ion-icon name="cube-outline" slot="start"></ion-icon>
       <ion-label>Orders
         <p>View your orders</p>
@@ -79,7 +113,7 @@
 </ion-col> -->
 
 <ion-col size-xs="12" size-md="6">
-    <ion-item lines="full" (click)="logout()">
+    <ion-item lines="none" (click)="logout()">
       <ion-icon name="log-out-outline" slot="start"></ion-icon>
       <ion-label>Logout
         <p>Logout your account</p>

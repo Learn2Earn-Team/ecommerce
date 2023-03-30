@@ -38,7 +38,20 @@ export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
     pagination: true,
     speed:500
   }
+
+  Config2: SwiperOptions = {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    speed:500,
+    scrollbar : {
+      draggable:true
+    }
+  }
+  colors : any[] = [];
+  sizes : any[] = [];
   @ViewChild('swiper') swiper!: SwiperComponent;
+index:  any = null;
+indexcol: any = null;
 
   constructor(public share:ShareService , public router: Router, public global: GlobalService , public toast : ToastService , public http : HttpClient , public api : ApicallService) {
 
@@ -63,9 +76,28 @@ export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
 
    this.api.api_getBase64(this.productdetail.sc_id)
     this.api.api_getImages(this.productdetail.sc_id)
+   await this.api.api_getSizes(this.productdetail.sc_id)
+   await this.api.api_getColors(this.productdetail.sc_id)
+
 
    this.global.productImages.subscribe(res=>{
     this.productimages = res
+    console.log(res)
+   })
+   this.global.productSizes.subscribe(res=>{
+    this.sizes = res
+    if(res.length === 0){
+      console.log("none size")
+      this.productdetail.size_name = 'none'
+    }
+    console.log(res)
+   })
+   this.global.productColors.subscribe(res=>{
+    this.colors = res
+    if(res.length === 0){
+      console.log("none color")
+      this.productdetail.color = 'none'
+    }
     console.log(res)
    })
   }
@@ -146,5 +178,19 @@ export class ProductPage implements OnInit,AfterViewInit , OnDestroy {
    }
 
 
+   SelectColor(i : any){
+    this.indexcol = i
+    this.productdetail.color = this.colors[i].color
+    console.log(this.colors[i].color)
+   }
+
+   SelectSize(i : any){
+    this.index = i
+    this.productdetail.size_name = this.sizes[i].size_name
+    this.productdetail.price_per_unit = this.sizes[i].size_price
+    console.log(this.sizes[i].size_price)
+    console.log(this.sizes[i].size_name)
+
+   }
 
   }
